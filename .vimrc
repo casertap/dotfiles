@@ -21,6 +21,9 @@ Plugin 'Shougo/unite.vim'
 ":Ag [option] {pattern} [{directory}]
 Plugin 'rking/ag.vim'
 
+"Most Recently Used (MRU) Vim Plugin
+Plugin 'yegappan/mru'
+
 "EasyMotion provides a much simpler way to use some motions in vim.
 " default: \\w search
 Plugin 'easymotion/vim-easymotion'
@@ -64,6 +67,9 @@ Plugin 'scrooloose/nerdtree'
 
 Plugin 'scheakur/vim-scheakur'
 
+"CoffeeScript support for vim
+Plugin 'kchmck/vim-coffee-script'
+
 "Plugin 'L9'
 
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -79,16 +85,14 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'chriskempson/base16-vim'
 
 call vundle#end()            " required
+syntax enable
+syntax on 
 filetype plugin indent on    " required
 
 
 set number
 " shows row and column number at bottom right corner
 set ruler
-
-
-
-
 
 
 " config for vim-indent-guides
@@ -117,8 +121,8 @@ let g:rvSaveDirectoryName="~/.RCSFiles/"
 set expandtab
 set tabstop=4
 
-syntax on 
-colorscheme codeschool
+colorscheme tibet 
 
+autocmd VimEnter * NERDTree
 
 
