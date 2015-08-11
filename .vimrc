@@ -50,7 +50,7 @@ Plugin 'bling/vim-airline'
 ":ToggleWhitespace
 ":CurrentLineWhitespaceOn
 ":StripWhitespace
-"Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
 
 "A command-line fuzzy finder written in Go
 Plugin 'junegunn/fzf'
@@ -121,8 +121,15 @@ let g:rvSaveDirectoryName="~/.RCSFiles/"
 set expandtab
 set tabstop=4
 
-colorscheme tibet 
+"detailed 8/10
+"sean 9/10
+"spring 7/10
+"thor 8/10
+"tibet 8/10
+"turbo 7/10
+colorscheme sean
 
+"Open NERDTree at startup
 autocmd VimEnter * NERDTree
 
 
