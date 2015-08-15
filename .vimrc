@@ -7,6 +7,9 @@ call vundle#begin()
 "Plugin Manager
 Plugin 'gmarik/Vundle.vim'
 
+"Rename
+Plugin 'danro/rename.vim'
+
 "Git wrapper
 Plugin 'tpope/vim-fugitive'
 
@@ -70,6 +73,9 @@ Plugin 'scheakur/vim-scheakur'
 "CoffeeScript support for vim
 Plugin 'kchmck/vim-coffee-script'
 
+"Syntax checking hacks for vim
+Plugin 'scrooloose/syntastic'
+
 "Plugin 'L9'
 
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -121,7 +127,23 @@ let g:rvSaveDirectoryName="~/.RCSFiles/"
 set expandtab
 set tabstop=4
 
-colorscheme tibet 
+
+"config for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"""""""""""""""
+
+"Config for ag
+"Start searching from your project root instead of the cwd
+let g:ag_working_path_mode="r"
+
+colorscheme sean
 
 autocmd VimEnter * NERDTree
 
