@@ -1,5 +1,5 @@
-set nocompatible       
-filetype off            
+set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -127,7 +127,7 @@ set tabstop=4
 "thor 8/10
 "tibet 8/10
 "turbo 7/10
-colorscheme sean
+colorscheme turbo
 
 "Open NERDTree at startup
 autocmd VimEnter * NERDTree
