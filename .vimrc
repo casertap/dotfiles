@@ -53,7 +53,7 @@ Plugin 'bling/vim-airline'
 ":ToggleWhitespace
 ":CurrentLineWhitespaceOn
 ":StripWhitespace
-"Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
 
 "A command-line fuzzy finder written in Go
 Plugin 'junegunn/fzf'
@@ -143,8 +143,16 @@ let g:syntastic_check_on_wq = 0
 "Start searching from your project root instead of the cwd
 let g:ag_working_path_mode="r"
 
+
+"detailed 8/10
+"sean 9/10
+"spring 7/10
+"thor 8/10
+"tibet 8/10
+"turbo 7/10
 colorscheme sean
 
+"Open NERDTree at startup
 autocmd VimEnter * NERDTree
 
 
