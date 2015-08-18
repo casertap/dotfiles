@@ -10,6 +10,9 @@ Plugin 'gmarik/Vundle.vim'
 "Rename
 Plugin 'danro/rename.vim'
 
+"Comment
+Plugin 'scrooloose/nerdcommenter'
+
 "Git wrapper
 Plugin 'tpope/vim-fugitive'
 
