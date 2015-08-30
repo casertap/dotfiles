@@ -10,7 +10,12 @@ Plugin 'gmarik/Vundle.vim'
 "Rename
 Plugin 'danro/rename.vim'
 
+"Vagrant
+Plugin 'markcornick/vim-vagrant'
+
+
 "Comment
+Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdcommenter'
 
 "Git wrapper
@@ -41,6 +46,8 @@ Plugin 'tpope/vim-surround'
 
 "visually displaying indent levels in Vim.
 Plugin 'nathanaelkane/vim-indent-guides'
+
+Plugin 'chrisbra/csv.vim'
 
 "a code-completion engine for Vim
 Plugin 'Valloric/YouCompleteMe'
@@ -76,8 +83,17 @@ Plugin 'scheakur/vim-scheakur'
 "CoffeeScript support for vim
 Plugin 'kchmck/vim-coffee-script'
 
+"Plugin for R
+Plugin 'jcfaria/Vim-R-plugin'
+
 "Syntax checking hacks for vim
 Plugin 'scrooloose/syntastic'
+
+"Ruby evaluation inside file using xmpfilter 
+"which is available in the rcodetools gem.
+Plugin 't9md/vim-ruby-xmpfilter'
+
+
 
 "Plugin 'L9'
 
@@ -157,5 +173,12 @@ colorscheme turbo
 
 "Open NERDTree at startup
 autocmd VimEnter * NERDTree
+
+"xmpfilter config for ruby evaluation
+nmap <Leader>ruby <Plug>(xmpfilter-run)
+xmap <Leader>ruby <Plug>(xmpfilter-run)
+imap <Leader>ruby <Plug>(xmpfilter-run)
+
+set paste
 
 
