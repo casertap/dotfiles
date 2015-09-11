@@ -93,7 +93,9 @@ Plugin 'scrooloose/syntastic'
 "which is available in the rcodetools gem.
 Plugin 't9md/vim-ruby-xmpfilter'
 
+Plugin 'fatih/vim-go'
 
+Plugin 'NLKNguyen/papercolor-theme'
 
 "Plugin 'L9'
 
@@ -169,8 +171,15 @@ let g:ag_working_path_mode="r"
 "thor 8/10
 "tibet 8/10
 "turbo 7/10
-colorscheme turbo
-
+"colorscheme turbo
+set t_ut=
+set t_Co=256   " This is may or may not needed.
+set background=light
+"let g:PaperColor_Light_Override = { 'background' : '#D8D2B7' } ", 'cursorline' : '#dfdfff', 'matchparen' : '#d6d6d6' , 'comment' : '#8e908c' }
+colorscheme PaperColor
+"DED9A6
+"DEDAAB
+"F5F2CE
 "Open NERDTree at startup
 autocmd VimEnter * NERDTree
 
