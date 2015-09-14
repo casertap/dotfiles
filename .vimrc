@@ -7,6 +7,17 @@ call vundle#begin()
 "Plugin Manager
 Plugin 'gmarik/Vundle.vim'
 
+"--------------------
+"lean & mean status/tabline for vim that's light as air
+Plugin 'bling/vim-airline'
+Plugin 'powerline/powerline'
+"config for airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+"DejaVu 100 Mono 12pt
+"--------------------
+
+
 "Rename
 Plugin 'danro/rename.vim'
 
@@ -46,6 +57,10 @@ Plugin 'yegappan/mru'
 "EasyMotion provides a much simpler way to use some motions in vim.
 " default: \\w search
 Plugin 'easymotion/vim-easymotion'
+hi link EasyMotionTarget Search
+hi link EasyMotionTarget2First Search
+hi link EasyMotionTarget2Second Search
+hi link EasyMotionShade Comment
 
 "Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
 "tags, and more. The plugin provides mappings to easily delete, change and add
@@ -74,16 +89,8 @@ Plugin 'Valloric/YouCompleteMe'
 
 "ctags support
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-lasytags'
 
-"--------------------
-"lean & mean status/tabline for vim that's light as air
-Plugin 'bling/vim-airline'
-"config for airline
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-"--------------------
 
 "Better whitespace highlighting for Vim
 ":ToggleWhitespace
@@ -199,4 +206,30 @@ set number
 set ruler
 set paste
 
-
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
