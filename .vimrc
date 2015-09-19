@@ -79,6 +79,9 @@ Plugin 'haya14busa/vim-easyoperator-line'
 "first char, last char, first highlight, last highlight
 Plugin 'haya14busa/vim-easyoperator-phrase'
 
+"motion: word forward : w
+"motion: word backward: b
+"----------------------
 "Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
 "tags, and more. The plugin provides mappings to easily delete, change and add
 "such surroundings in pairs.
@@ -105,17 +108,21 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'Valloric/YouCompleteMe'
 
 "ctags support
+"brew install ctags
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 
+"brew install gotags
+Plugin 'majutsushi/tagbar'
+nmap <C-t> :TagbarToggle<CR>
 
 "Better whitespace highlighting for Vim
 ":ToggleWhitespace
 ":CurrentLineWhitespaceOn
 ":StripWhitespace
-Plugin 'ntpeters/vim-better-whitespace'
-set expandtab
-set tabstop=4
+"Plugin 'ntpeters/vim-better-whitespace'
+"set expandtab
+"set tabstop=4
 
 
 "--------------------
@@ -133,8 +140,8 @@ Plugin 'dougnukem/vim-swap-lines'
 "Use RCS to keep a backup version whenever you save a file
 Plugin 'vim-scripts/rcsvers.vim'
 "config rcsvers.vim
-"(saving all files in a single
-""       directory) the script will save them to $VIM/RCSFiles.
+"(saving all files in a single directory) the script will save them to $VIM/RCSFiles.
+"install http://rudix.org/packages/rcs.html
 let g:rvSaveDirectoryType = 1
 let g:rvSaveDirectoryName="~/.RCSFiles/"
 
@@ -180,6 +187,11 @@ imap <Leader>ruby <Plug>(xmpfilter-run)
 "------------------
 
 Plugin 'fatih/vim-go'
+Plugin 't-yuki/vim-go-coverlay'
+"config
+au FileType go nmap <leader>c <Plug>(go-coverlay)
+au FileType go nmap <leader>C <Plug>(go-clearlay)
+au BufWritePost *.go call go#coverlay#Coverlay()
 
 "------------------
 Plugin 'NLKNguyen/papercolor-theme'
