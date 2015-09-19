@@ -2,6 +2,7 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 
 "Plugin Manager
@@ -111,18 +112,21 @@ Plugin 'Valloric/YouCompleteMe'
 "brew install ctags
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+let g:easytags_async = 1
 
 "brew install gotags
+"gotags -R=true /Users/pierrecaserta/Documents/workspace/golang/src/_sources/go-master/src/ > ~/.vimtags
 Plugin 'majutsushi/tagbar'
 nmap <C-t> :TagbarToggle<CR>
 
+"------------------------
 "Better whitespace highlighting for Vim
 ":ToggleWhitespace
 ":CurrentLineWhitespaceOn
 ":StripWhitespace
-"Plugin 'ntpeters/vim-better-whitespace'
-"set expandtab
-"set tabstop=4
+Plugin 'ntpeters/vim-better-whitespace'
+set expandtab
+set tabstop=4
 
 
 "--------------------
@@ -187,11 +191,15 @@ imap <Leader>ruby <Plug>(xmpfilter-run)
 "------------------
 
 Plugin 'fatih/vim-go'
+":GoInstallBinaries 
 Plugin 't-yuki/vim-go-coverlay'
 "config
 au FileType go nmap <leader>c <Plug>(go-coverlay)
 au FileType go nmap <leader>C <Plug>(go-clearlay)
 au BufWritePost *.go call go#coverlay#Coverlay()
+"Plugin 'gryski/vim-godef'
+"git clone https://github.com/dgryski/vim-godef ~/.vim/bundle/vim-godef
+
 
 "------------------
 Plugin 'NLKNguyen/papercolor-theme'
@@ -228,6 +236,9 @@ set background=light
 
 call vundle#end()            " required
 
+"run golint before save
+"autocmd BufWritePost *.go execute 'GoLint' | cwindow
+"set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 colorscheme PaperColor
 set number
