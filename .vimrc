@@ -54,6 +54,7 @@ let g:ag_working_path_mode="r"
 "Most Recently Used (MRU) Vim Plugin
 Plugin 'yegappan/mru'
 
+"---------------------
 "EasyMotion provides a much simpler way to use some motions in vim.
 " default: \\w search
 Plugin 'easymotion/vim-easymotion'
@@ -61,6 +62,22 @@ hi link EasyMotionTarget Search
 hi link EasyMotionTarget2First Search
 hi link EasyMotionTarget2Second Search
 hi link EasyMotionShade Comment
+"replace the default vim search
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+"n to go to the next
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+
+"visual mode + \\l
+"select first line letter, select last line letter
+Plugin 'haya14busa/vim-easyoperator-line'
+
+"visual mode + \\p
+"first char, last char, first highlight, last highlight
+Plugin 'haya14busa/vim-easyoperator-phrase'
 
 "Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
 "tags, and more. The plugin provides mappings to easily delete, change and add
@@ -89,7 +106,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 "ctags support
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-lasytags'
+Plugin 'xolox/vim-easytags'
 
 
 "Better whitespace highlighting for Vim
