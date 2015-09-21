@@ -89,7 +89,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 "ctags support
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-lasytags'
+Plugin 'xolox/vim-easytags'
 
 
 "Better whitespace highlighting for Vim
@@ -99,7 +99,7 @@ Plugin 'xolox/vim-lasytags'
 Plugin 'ntpeters/vim-better-whitespace'
 set expandtab
 set tabstop=4
-
+:autocmd BufWritePre * :StripWhitespace
 
 "--------------------
 "A command-line fuzzy finder written in Go
@@ -183,19 +183,17 @@ set background=light
 "DED9A6
 "DEDAAB
 "F5F2CE
+
+
+Plugin 'rstacruz/sparkup'
+
 "------------------
-
 "Plugin 'L9'
-
+"fast search
 "Plugin 'git://git.wincent.com/command-t.git'
-
-"Plugin 'file:///home/gmarik/path/to/plugin'
-
-
 "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
 "Plugin 'user/L9', {'name': 'newL9'}
-
+"-------------------
 
 call vundle#end()            " required
 
