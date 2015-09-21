@@ -2,6 +2,7 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 
 "Plugin Manager
@@ -54,6 +55,7 @@ let g:ag_working_path_mode="r"
 "Most Recently Used (MRU) Vim Plugin
 Plugin 'yegappan/mru'
 
+"---------------------
 "EasyMotion provides a much simpler way to use some motions in vim.
 " default: \\w search
 Plugin 'easymotion/vim-easymotion'
@@ -61,7 +63,26 @@ hi link EasyMotionTarget Search
 hi link EasyMotionTarget2First Search
 hi link EasyMotionTarget2Second Search
 hi link EasyMotionShade Comment
+"replace the default vim search
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+"n to go to the next
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+"nmap s <Plug>(easymotion-s2)
+"nmap t <Plug>(easymotion-t2)
 
+"visual mode + \\l
+"select first line letter, select last line letter
+Plugin 'haya14busa/vim-easyoperator-line'
+
+"visual mode + \\p
+"first char, last char, first highlight, last highlight
+Plugin 'haya14busa/vim-easyoperator-phrase'
+
+"motion: word forward : w
+"motion: word backward: b
+"----------------------
 "Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
 "tags, and more. The plugin provides mappings to easily delete, change and add
 "such surroundings in pairs.
@@ -88,10 +109,17 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'Valloric/YouCompleteMe'
 
 "ctags support
+"brew install ctags
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+let g:easytags_async = 1
 
+"brew install gotags
+"gotags -R=true /Users/pierrecaserta/Documents/workspace/golang/src/_sources/go-master/src/ > ~/.vimtags
+Plugin 'majutsushi/tagbar'
+nmap <C-t> :TagbarToggle<CR>
 
+"------------------------
 "Better whitespace highlighting for Vim
 ":ToggleWhitespace
 ":CurrentLineWhitespaceOn
@@ -116,8 +144,8 @@ Plugin 'dougnukem/vim-swap-lines'
 "Use RCS to keep a backup version whenever you save a file
 Plugin 'vim-scripts/rcsvers.vim'
 "config rcsvers.vim
-"(saving all files in a single
-""       directory) the script will save them to $VIM/RCSFiles.
+"(saving all files in a single directory) the script will save them to $VIM/RCSFiles.
+"install http://rudix.org/packages/rcs.html
 let g:rvSaveDirectoryType = 1
 let g:rvSaveDirectoryName="~/.RCSFiles/"
 
@@ -153,7 +181,7 @@ Plugin 'jcfaria/Vim-R-plugin'
 
 
 "----------------
-"Ruby evaluation inside file using xmpfilter 
+"Ruby evaluation inside file using xmpfilter
 "which is available in the rcodetools gem.
 Plugin 't9md/vim-ruby-xmpfilter'
 "xmpfilter config for ruby evaluation
@@ -163,6 +191,15 @@ imap <Leader>ruby <Plug>(xmpfilter-run)
 "------------------
 
 Plugin 'fatih/vim-go'
+":GoInstallBinaries
+Plugin 't-yuki/vim-go-coverlay'
+"config
+au FileType go nmap <leader>c <Plug>(go-coverlay)
+au FileType go nmap <leader>C <Plug>(go-clearlay)
+au BufWritePost *.go call go#coverlay#Coverlay()
+"Plugin 'gryski/vim-godef'
+"git clone https://github.com/dgryski/vim-godef ~/.vim/bundle/vim-godef
+
 
 "------------------
 Plugin 'NLKNguyen/papercolor-theme'
@@ -197,6 +234,9 @@ Plugin 'rstacruz/sparkup'
 
 call vundle#end()            " required
 
+"run golint before save
+"autocmd BufWritePost *.go execute 'GoLint' | cwindow
+"set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 colorscheme PaperColor
 set number
