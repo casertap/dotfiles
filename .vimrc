@@ -153,6 +153,8 @@ let g:rvSaveDirectoryName="~/.RCSFiles/"
 Plugin 'scrooloose/nerdtree'
 "Nerdtree config
 map <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>+ :exe "vertical resize +8"<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize -8"<CR>
 "Open NERDTree at startup
 "autocmd VimEnter * NERDTree
 "--------------------
