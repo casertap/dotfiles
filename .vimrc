@@ -18,6 +18,8 @@ let g:airline#extensions#tabline#enabled = 1
 "DejaVu 100 Mono 12pt
 "--------------------
 
+":BufOnly close every other buffers
+Plugin 'vim-scripts/BufOnly.vim'
 
 "Rename
 Plugin 'danro/rename.vim'
@@ -35,7 +37,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 
 "---------------------
-
+Plugin 'vim-scripts/DirDiff.vim'
+" :DirDiff <A:Src Directory> <B:Src Directory>
+" :DirDiff ../something/dir1 /usr/bin/somethingelse/dir2
+"---------------------
 "The unite or unite.vim plug-in can search and display information from
 "arbitrary sources like files, buffers, recently used files or registers
 ":Unite file buffer
@@ -127,7 +132,7 @@ nmap <C-t> :TagbarToggle<CR>
 Plugin 'ntpeters/vim-better-whitespace'
 set expandtab
 set tabstop=4
-:autocmd BufWritePre * :StripWhitespace
+autocmd BufWritePre * :StripWhitespace
 
 "--------------------
 "A command-line fuzzy finder written in Go
@@ -162,8 +167,6 @@ nnoremap <silent> <Leader>- :exe "vertical resize -8"<CR>
 
 Plugin 'scheakur/vim-scheakur'
 
-"CoffeeScript support for vim
-Plugin 'kchmck/vim-coffee-script'
 
 "Plugin for R
 Plugin 'jcfaria/Vim-R-plugin'
@@ -198,16 +201,14 @@ Plugin 't-yuki/vim-go-coverlay'
 "config
 au FileType go nmap <leader>c <Plug>(go-coverlay)
 au FileType go nmap <leader>C <Plug>(go-clearlay)
-au BufWritePost *.go call go#coverlay#Coverlay()
+"au BufWritePost *.go call go#coverlay#Coverlay()
 "Plugin 'gryski/vim-godef'
 "git clone https://github.com/dgryski/vim-godef ~/.vim/bundle/vim-godef
 
 
 "------------------
+
 Plugin 'NLKNguyen/papercolor-theme'
-syntax enable
-syntax on
-filetype plugin indent on    " required
 "detailed 8/10
 "sean 9/10
 "spring 7/10
@@ -233,6 +234,8 @@ Plugin 'rstacruz/sparkup'
 "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "Plugin 'user/L9', {'name': 'newL9'}
 "-------------------
+
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()            " required
 
@@ -273,3 +276,9 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+
+syntax enable
+filetype plugin indent on    " required
+
+
