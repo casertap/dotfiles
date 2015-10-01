@@ -16,6 +16,9 @@ Plugin 'powerline/powerline'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "DejaVu 100 Mono 12pt
+
+
+Plugin 'terryma/vim-multiple-cursors'
 "--------------------
 
 ":BufOnly close every other buffers
