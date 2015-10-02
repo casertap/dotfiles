@@ -18,9 +18,6 @@ let g:airline#extensions#tabline#enabled = 1
 "DejaVu 100 Mono 12pt
 
 
-Plugin 'terryma/vim-multiple-cursors'
-"--------------------
-
 ":BufOnly close every other buffers
 Plugin 'vim-scripts/BufOnly.vim'
 
@@ -239,6 +236,12 @@ Plugin 'rstacruz/sparkup'
 "-------------------
 
 Plugin 'kchmck/vim-coffee-script'
+
+"------------------
+Plugin 'terryma/vim-multiple-cursors'
+let g:multi_cursor_next_key='<C-b>'
+"--------------------
+
 
 call vundle#end()            " required
 
