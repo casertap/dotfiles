@@ -8,15 +8,19 @@ call vundle#begin()
 "Plugin Manager
 Plugin 'gmarik/Vundle.vim'
 
+"test
 "--------------------
 "lean & mean status/tabline for vim that's light as air
 Plugin 'bling/vim-airline'
-Plugin 'powerline/powerline'
-"config for airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "DejaVu 100 Mono 12pt
 
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-rails'
+
+"slim html template
+Plugin 'slim-template/vim-slim'
 
 ":BufOnly close every other buffers
 Plugin 'vim-scripts/BufOnly.vim'
@@ -25,7 +29,7 @@ Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'danro/rename.vim'
 
 "Vagrant
-Plugin 'markcornick/vim-vagrant'
+"Plugin 'markcornick/vim-vagrant'
 
 "-------------------
 "Comment
@@ -46,18 +50,19 @@ Plugin 'vim-scripts/DirDiff.vim'
 ":Unite file buffer
 Plugin 'Shougo/unite.vim'
 
+"test
 "----------------------
 "This plugin is a front for ag, A.K.A. the_silver_searcher. Ag can be used as
 "a replacement for 153% of the uses of ack. This plugin will allow you to run
 "ag from vim, and shows the results in a split window.
 ":Ag [option] {pattern} [{directory}]
 Plugin 'rking/ag.vim'
-"Config for ag
+"ConfigConfig for ag
 "Start searching from your project root instead of the cwd
 let g:ag_working_path_mode="r"
 "----------------------
 
-"Most Recently Used (MRU) Vim Plugin
+"Most RecentlyRecently Used (MRU) Vim Plugin
 Plugin 'yegappan/mru'
 
 "---------------------
@@ -103,8 +108,11 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 set backspace=indent,eol,start
 set bs=2
-set sw=4
-set ts=4
+set sw=2
+set ts=2
+set list
+set listchars=tab:\ ¬,trail:.
+
 """""""""
 "--------------------
 
@@ -118,6 +126,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 let g:easytags_async = 1
+"ctags -R -f ~/.vimtags /Users/pierrecaserta/workspace/
 
 "brew install gotags
 "gotags -R=true /Users/pierrecaserta/Documents/workspace/golang/src/_sources/go-master/src/ > ~/.vimtags
@@ -130,16 +139,15 @@ nmap <C-t> :TagbarToggle<CR>
 ":CurrentLineWhitespaceOn
 ":StripWhitespace
 Plugin 'ntpeters/vim-better-whitespace'
-set expandtab
-set tabstop=4
+set tabstop=2 shiftwidth=2 expandtab
 autocmd BufWritePre * :StripWhitespace
 
 "--------------------
-"A command-line fuzzy finder written in Go
+"lA command-line fuzzy finder written in Go
+
 Plugin 'junegunn/fzf'
 map <silent> <C-f> :FZF<CR>
 "--------------------
-
 
 "swap line plugin for vim
 "key mapping to c-j and c-k
@@ -164,9 +172,7 @@ nnoremap <silent> <Leader>- :exe "vertical resize -8"<CR>
 "autocmd VimEnter * NERDTree
 "--------------------
 
-
 Plugin 'scheakur/vim-scheakur'
-
 
 "Plugin for R
 Plugin 'jcfaria/Vim-R-plugin'
@@ -184,7 +190,6 @@ Plugin 'jcfaria/Vim-R-plugin'
 "let g:syntastic_check_on_wq = 0
 """""""""""""""
 
-
 "----------------
 "Ruby evaluation inside file using xmpfilter
 "which is available in the rcodetools gem.
@@ -195,17 +200,20 @@ xmap <Leader>ruby <Plug>(xmpfilter-run)
 imap <Leader>ruby <Plug>(xmpfilter-run)
 "------------------
 
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 ":GoInstallBinaries
-Plugin 't-yuki/vim-go-coverlay'
+"Plugin 't-yuki/vim-go-coverlay'
 "config
-au FileType go nmap <leader>c <Plug>(go-coverlay)
-au FileType go nmap <leader>C <Plug>(go-clearlay)
+"au FileType go nmap <leader>c <Plug>(go-coverlay)
+"au FileType go nmap <leader>C <Plug>(go-clearlay)
 "au BufWritePost *.go call go#coverlay#Coverlay()
 "Plugin 'gryski/vim-godef'
 "git clone https://github.com/dgryski/vim-godef ~/.vim/bundle/vim-godef
 
-
+map <C-z> <C-w>
+"map <C-p> :bprev
+"map <C-n> :bnext
+"map <C-m> :MRU
 "------------------
 
 Plugin 'NLKNguyen/papercolor-theme'
@@ -224,7 +232,6 @@ set background=light
 "DEDAAB
 "F5F2CE
 
-
 Plugin 'rstacruz/sparkup'
 
 "------------------
@@ -242,6 +249,10 @@ Plugin 'terryma/vim-multiple-cursors'
 let g:multi_cursor_next_key='<C-b>'
 "--------------------
 
+"Plugin 'Chiel92/vim-autoformat'
+"au BufWrite * :Autoformat
+
+au BufWrite * :g/^\_$\n\_^$/d
 
 call vundle#end()            " required
 
@@ -255,36 +266,34 @@ set number
 set ruler
 set paste
 
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
-
+" let g:tagbar_type_go = {
+"     \ 'ctagstype' : 'go',
+"     \ 'kinds'     : [
+"         \ 'p:package',
+"         \ 'i:imports:1',
+"         \ 'c:constants',
+"         \ 'v:variables',
+"         \ 't:types',
+"         \ 'n:interfaces',
+"         \ 'w:fields',
+"         \ 'e:embedded',
+"         \ 'm:methods',
+"         \ 'r:constructor',
+"         \ 'f:functions'
+"     \ ],
+"     \ 'sro' : '.',
+"     \ 'kind2scope' : {
+"         \ 't' : 'ctype',
+"         \ 'n' : 'ntype'
+"     \ },
+"     \ 'scope2kind' : {
+"         \ 'ctype' : 't',
+"         \ 'ntype' : 'n'
+"     \ },
+"     \ 'ctagsbin'  : 'gotags',
+"     \ 'ctagsargs' : '-sort -silent'
+" \ }
+"
 
 syntax enable
 filetype plugin indent on    " required
-
-
