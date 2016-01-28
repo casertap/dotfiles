@@ -33,6 +33,7 @@ End the input string with a colon : followed by a command to execute it on the o
 
 -----
 
+\b see all buffers in a tab
 [b to go to the previous buffer
 ]b to go to the next buffer
 [n to go to the previous SCM conflict marker
@@ -69,16 +70,69 @@ SELECT
 yiw        (yank inner word) 
 viw        (visually select inner word) 
 
+dip (delete in paragraph)
+
 ---------
 BUFFER SIZE
 minus 30 left: <C-w> 30 < 
+
+Close all other buffers: :BufOnly
 ---------
 
+ <C-L> refresh screen 
+
+------
 Highlight all the same word
 -> cursor on the word -> gd
 -> n to go next
 
+Moving windows:
+Starting with this:
+
+____________________
+| one       | two  |
+|           |      |
+|           |______|
+|           | three|
+|           |      |
+|___________|______|
+Make 'three' the active window, then issue the command ctrl-w J. This moves the current window to fill the bottom of the screen, leaving you with:
+
+____________________
+| one       | two  |
+|           |      |
+|___________|______|
+| three            |
+|                  |
+|__________________|
+Now make either 'one' or 'two' the active window, then issue the command ctrl-w r. This 'rotates' the windows in the current row, leaving you with:
+
+____________________
+| two       | one  |
+|           |      |
+|___________|______|
+| three            |
+|                  |
+|__________________|
+Now make 'two' the active window, and issue the command ctrl-w H. This moves the current window to fill the left of the screen, leaving you with:
+
+____________________
+| two       | one  |
+|           |      |
+|           |______|
+|           | three|
+|           |      |
+|___________|______|
+As you can see, the manouevre is a bit of a shuffle. With 3 windows, it's a bit like one of those 'tile game' puzzles. I don't recommand trying this if you have 4 or more windows - you'd be better off closing them then opening them again in the desired positions.
+
+
+
 ********************
 
 tmux:
-swap window, source target: swap-window -s 3 -t 1
+swap window, source target: swap-window -s 5 -t 6
+
+***********
+
+brew install tig
+tig: git visualizer

@@ -1,5 +1,10 @@
+autocmd vimenter * silent! lcd %:p:h
 map <C-z> <C-w>
 map <leader>nn :NERDTreeFind<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>nh :NERDTree .<CR>
+
+nnoremap <leader>nr :NERDTree /Users/pierrecaserta/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems<CR>
 
 command RemoveMultipleBlankLines g/^\_$\n\_^$/d
 
@@ -19,3 +24,11 @@ map <F3> :source ~/vim_session <cr>     " And load session with F3
 
 let g:rvSaveDirectoryType = 1
 let g:rvSaveDirectoryName="~/.RCSFiles/"
+
+set t_Co=256
+set background=light
+colorscheme PaperColor
+"let g:PaperColor_Light_Override = { 'background' : '#cac39b' , 'cursorline' : '#dfdfff', 'matchparen' : '#d6d6d6' , 'comment' : '#8e908c' }
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
