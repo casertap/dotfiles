@@ -1,4 +1,4 @@
-<C-p> CtrlP 
+<C-p> CtrlP
 -> <C-t> Open in a new Tab (\t to view all tabs)
 	:tabp tabprevious
 	:tabn tabnext
@@ -9,7 +9,7 @@
 -> <C-n> Next search
    <C-p> Previous search
 
--> <C-z> to mark/unmark multiple files and 
+-> <C-z> to mark/unmark multiple files and
          <C-o> to open them
 
 -> <C-r> to switch to regexp mode
@@ -17,10 +17,21 @@
 End the input string with a colon : followed by a command to execute it on the opening file(s):
 	:diffthis when opening multiple files
 
+----
+\rlog for diff with previous versions
+
+]c               - advance to the next block with differences
+[c               - reverse search for the previous block with differences
+do (diff obtain) - bring changes from the other file to the current file
+dp (diff put)    - send changes from the current file to the other file
+zo               - unfold/unhide text
+zc               - refold/rehide text
+zr               - unfold both files completely
+zm               - fold both files completely
 
 ------
 
-\f Ask.vim 
+\f Ask.vim
 -> h to open in horizontal split
 -> v to open in vertical split
 -> t to open in new tab
@@ -47,8 +58,7 @@ End the input string with a colon : followed by a command to execute it on the o
 ----
 SnipMate: <TAB> to expend to snippets and <TAB> again to go to the next element
 
-
-\\w -> first letter of the word; the right letter 
+\\w -> first letter of the word; the right letter
 
 -----
 ManyCursor
@@ -67,19 +77,32 @@ rbenv-ctags <<< to enable gem tags
 ----------
 SELECT
 
-yiw        (yank inner word) 
-viw        (visually select inner word) 
+yiw        (yank inner word)
+viw        (visually select inner word)
 
 dip (delete in paragraph)
 
 ---------
 BUFFER SIZE
-minus 30 left: <C-w> 30 < 
+minus 30 left: <C-w> 30 <
 
 Close all other buffers: :BufOnly
----------
 
- <C-L> refresh screen 
+With bufexplorer, you can quickly and easily switch between buffers by using the one of the default public interfaces (leader):
+'be' (normal open) or 'bt' (toggle open / close) or 'bs' (force horizontal split open) or 'bv' (force vertical split open)
+
+---------
+3yy -> yeld 3 lines
+40ggp -> go at line 40 and paste
+----
+
+Change inside ""
+Example -> your are inside '' like suck 'myword'
+ci' -> change inside '' will delete what is inside
+
+----
+
+ <C-L> refresh screen
 
 ------
 Highlight all the same word
@@ -125,8 +148,6 @@ ____________________
 |___________|______|
 As you can see, the manouevre is a bit of a shuffle. With 3 windows, it's a bit like one of those 'tile game' puzzles. I don't recommand trying this if you have 4 or more windows - you'd be better off closing them then opening them again in the desired positions.
 
-
-
 ********************
 
 tmux:
@@ -136,3 +157,7 @@ swap window, source target: swap-window -s 5 -t 6
 
 brew install tig
 tig: git visualizer
+
+MOUSE:
+brew cask install easysimbl
+D/l MouseTerm
