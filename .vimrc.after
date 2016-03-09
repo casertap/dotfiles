@@ -31,8 +31,8 @@ let g:rvSaveDirectoryName="~/.RCSFiles/"
 
 set t_Co=256
 set background=light
-colorscheme PaperColor
 "let g:PaperColor_Light_Override = { 'background' : '#cac39b' , 'cursorline' : '#dfdfff', 'matchparen' : '#d6d6d6' , 'comment' : '#8e908c' }
+colorscheme PaperColor
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -46,3 +46,14 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 let g:jsx_ext_required = 0
 let NERDSpaceDelims=1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+set noerrorbells visualbell t_vb=
