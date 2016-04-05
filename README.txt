@@ -161,3 +161,28 @@ tig: git visualizer
 MOUSE:
 brew cask install easysimbl
 D/l MouseTerm
+
+-----------------------
+MAKE COLORS WORKS WITH SPACEMACS
+
+First I had to uninstall my previous version of emacs and then install the patched version.
+
+brew uninstall emacs
+brew tap choppsv1/term24
+brew install choppsv1/term24/emacs
+
+Also for anyone interested this is a fast way to install the nightly version of iTerm2. By default casks will install to ~/Applications. Run install with --appdir if you want it elsewhere. Cask usage
+
+brew tap caskroom/versions
+brew cask install iterm2-nightly
+
+Then run emacs with the flag mentioned here.
+
+ITERM_24BIT=1 emacs
+
+The last thing I need to figure out is how to fix the bad characters at the bottom. I have iTerm set to use Source Code Pro for both the ASCII and non ASCII font.
+
+Other minor things not working for me:
+The cursor is not colored like in GUI emacs.
+There is no highlight on mouseover for clickable items.
+---------------------------
