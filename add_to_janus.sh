@@ -11,3 +11,4 @@ git clone https://github.com/nathanaelkane/vim-indent-guides.git
 git clone https://github.com/ensime/ensime-vim.git
 git clone https://github.com/derekwyatt/vim-scala.git
 git clone https://github.com/kien/rainbow_parentheses.vim.git
+git clone https://github.com/mikelue/vim-maven-plugin.git
