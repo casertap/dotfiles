@@ -162,8 +162,10 @@ MOUSE:
 brew cask install easysimbl
 D/l MouseTerm
 
+Temporaly switch to console :!bash  (then C-d)
+
 -----------------------
-MAKE COLORS WORKS WITH SPACEMACS
+SPACEMACS COLORS
 
 First I had to uninstall my previous version of emacs and then install the patched version.
 
