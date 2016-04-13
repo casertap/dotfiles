@@ -18,6 +18,11 @@ map <Leader>ss :call RunNearestSpec()<CR>
 map <Leader>sl :call RunLastSpec()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
 
+let g:slime_target = "tmux"
+xmap <c-c><c-c> <Plug>SlimeRegionSend
+nmap <c-c><c-c> <Plug>SlimeParagraphSend
+nmap <c-c>v     <Plug>SlimeConfig
+
 map <Leader>bye orequire 'pry-byebug'; byebug<ESC>
 
 let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
@@ -44,6 +49,7 @@ let g:indent_guides_auto_colors = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 2
 let g:indent_guides_enable_on_vim_startup = 1
+set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
 
 let g:jsx_ext_required = 0
 let NERDSpaceDelims=1

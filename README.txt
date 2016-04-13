@@ -148,6 +148,15 @@ ____________________
 |___________|______|
 As you can see, the manouevre is a bit of a shuffle. With 3 windows, it's a bit like one of those 'tile game' puzzles. I don't recommand trying this if you have 4 or more windows - you'd be better off closing them then opening them again in the desired positions.
 
+---from vim to tmux (vim-slime)
+
+select region and:
+xmap <c-c><c-c> <Plug>SlimeRegionSend
+nmap <c-c><c-c> <Plug>SlimeParagraphSend
+nmap <c-c>v     <Plug>SlimeConfig
+
+:SlimeConfig -> default, pane_number
+
 ********************
 
 tmux:
