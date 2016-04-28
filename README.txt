@@ -1,3 +1,5 @@
+############### VIM #####################
+
 <C-p> CtrlP
 -> <C-t> Open in a new Tab (\t to view all tabs)
 	:tabp tabprevious
@@ -158,20 +160,37 @@ nmap <c-c>v     <Plug>SlimeConfig
 :SlimeConfig -> default, pane_number
 
 ********************
+Temporaly switch to console :!bash  (then C-d)
 
-tmux:
+__________________________ ensime vim _______________________
+
+|:EnClasspath            generates classpath for ensime and launch ensime-server
+|:EnType                 displays type under cursor
+|:EnSearch               search for a public symbol
+|:EnSymbol               displays the path where the symbol under cursor was declared
+|:EnDeclaration          open buffer where the symbol under cursor was declared
+|:EnDeclarationSplit     split window where the symbol under cursor was declared
+|:EnDocUri               displays documentation url under cursor
+|:EnDocBrowse            launch $BROWSER (env variable) documentation url
+|:EnTypeCheck            launch a check on current file (launched on save)
+|:EnToggleFullType       set ensime to return either shallow types or full types
+|:EnCompleteFunc         get an omnicompletion menu (via ctrl+X ctrl+O) - blocking
+|:EnFormatSource         format file based (see https://github.com/ensime/ensime-emacs/wiki/Scalariform-Preferences)
+|:EnSetBreak             add a breakpoint on current line
+|:EnRename               rename symbol under cursor
+|:EnClearBreaks          remove all breakpoints
+|:EnDebug class          start debugging the specified class
+|:EnContinue             continue debugging after pause
+|:EnBacktrace            show backtrace when execution is paused in a new buffer
+
+####################### tmux #########################
+
 swap window, source target: swap-window -s 5 -t 6
 
 ***********
-
-brew install tig
-tig: git visualizer
-
 MOUSE:
 brew cask install easysimbl
 D/l MouseTerm
-
-Temporaly switch to console :!bash  (then C-d)
 
 -----------------------
 SPACEMACS COLORS
@@ -197,3 +216,43 @@ Other minor things not working for me:
 The cursor is not colored like in GUI emacs.
 There is no highlight on mouseover for clickable items.
 ---------------------------
+
+################ EMACS #################
+
+ensime emacs
+
+C-c C-v e ensime-print-errors-at
+C-c C-r t ensime-import-type-at
+C-c C-v t ensime-print-type-at
+C-c C-v i ensime-inspect-type-at
+C-c C-t t ensime-goto-test
+C-c C-b o ensime-sbt-do-test-only
+M-. ensime-edit-definition
+
+REFACTORING
+
+C-c C-r r ensime-refactor-rename
+C-c C-v f ensime-format-source
+
+Search
+
+C-c C-v v search
+
+GENERAL
+
+C-x b switch-to-buffer
+
+=============
+
+C-x C-t Transpose two lines (transpose-lines).
+
+MOVE
+C-a Move to the beginning of the line (move-beginning-of-line).
+C-e Move to the end of the line (move-end-of-line).
+
+++++
+C-space select
+C-x r y Yank the last killed rectangle with its upper left corner at point (yank-rectangle).
+======================
+emacs neotree
+copy: C-c C-p
