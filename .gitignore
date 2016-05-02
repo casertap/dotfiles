@@ -1,7 +1,7 @@
 #Ignore everything
 #*
 .DS_Store
-
+*.swp
 # But not these files...
 #!.gitignore
 #!.vimrc
