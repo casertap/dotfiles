@@ -19,6 +19,8 @@ map <Leader>sl :call RunLastSpec()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
 
 let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+
 xmap <c-c><c-c> <Plug>SlimeRegionSend
 nmap <c-c><c-c> <Plug>SlimeParagraphSend
 nmap <c-c>v     <Plug>SlimeConfig
