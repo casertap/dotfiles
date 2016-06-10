@@ -101,6 +101,7 @@ With bufexplorer, you can quickly and easily switch between buffers by using the
 ---------
 3yy -> yeld 3 lines
 40ggp -> go at line 40 and paste
+pgvy -> paste and re yank <-------
 ----
 
 Change inside ""
@@ -110,6 +111,10 @@ ci' -> change inside '' will delete what is inside
 ----
 
  <C-L> refresh screen
+
+---
+Syntactic
+Using :SyntasticToggleMode you can toggle Syntastic into passive mode
 
 ------
 Highlight all the same word
