@@ -69,6 +69,11 @@ VisualMode, Select the word, <C-n> to place a cursor and search for the next occ
 <C-x> to pass without selecting
 
 -----
+FORMAT JSON
+
+%!python -m json.tool
+
+-----
 Ctag
 
 jump to method definition using :tag -> <C-]>
@@ -256,3 +261,33 @@ C-x r y Yank the last killed rectangle with its upper left corner at point (yank
 ======================
 emacs neotree
 copy: C-c C-p
+
+
+=------------SPACEMACS ------------
+
+- NEOTREE
+SPC f t     NeoTree Toggle
+¦	        open file in an vertically split window
+-	        open file in an horizontally split window
+
+-- WINDOW
+SPC w h       window on the left
+SPC w l       window on the right
+SPC w m	      maximize/minimize a window 
+SPC w .	    initiate micro-state
+         [	shrink window horizontally
+         ]	enlarge window horizontally 
+         {	shrink window vertically
+         }	enlarge window vertically
+         c	close window
+         C	close other windows
+
+-- SEARCH FILE
+SPC p f       fuzzy search
+C-c o         open split vertically 
+C-g           Quit
+SPC s p       smart search in files
+ 
+-- CONFIG
+Config SPC f e d
+Reload config SPC f e R

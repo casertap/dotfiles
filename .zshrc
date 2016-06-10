@@ -1,3 +1,4 @@
+source ~/.aws/source_me
 DISABLE_AUTO_TITLE="true"
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/pierrecaserta/.oh-my-zsh
