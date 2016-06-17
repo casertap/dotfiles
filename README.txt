@@ -229,6 +229,58 @@ There is no highlight on mouseover for clickable items.
 
 ################ EMACS #################
 
+Important:
+
+C-h C-h (help)
+C-g quit the mini-buffer
+M-x
+
+C-_ Undo (C-x u)
+C-w cut
+C-y paste
+
+// Copy/Cut/Paste Commands:
+// ------------------------
+// C-y     : Pastes whatever is in the clipboard at the cursor.
+//           Subsequent C-y's will keep on pasting.
+// C-space : Starts marking/highligting a region.
+// C-k     : Kills/deletes the whole line, puts it into the clipboard.
+// M-w     : Copies this region into the clipboard.
+// C-w     : Cuts this region into the clipboard (deletes the region and copies it to clipbrd)
+
+Rectangle 
+
+C-SPC To select a region, move the point to one end of your desired region. C-space again to reactivate the mark
+C-w cut
+C-y paste
+C-
+
+C-x r k Kill the text of the region-rectangle, saving its contents as the “last killed rectangle” (kill-rectangle).
+C-x r M-w Save the text of the region-rectangle as the “last killed rectangle” (copy-rectangle-as-kill).
+C-x r d Delete the text of the region-rectangle (delete-rectangle).
+C-x r y Yank the last killed rectangle with its upper left corner at point (yank-rectangle).
+
+
+Buffer
+
+C-x b switch buffer
+C-x right and C-x left: cycle through buffers sequentially with the key combos 
+C-x k, which will prompt you in the mini-buffer for the name of the buffer to kill 
+
+C-x C-f Open file (need to enter the path)
+C-x C-s Save file
+C-x C-w Save As
+M-x recover-file: recovers the auto-saved file.
+
+Move window
+
+C-x o jump
+C-x 0 : close the active window
+C-x 1 : close all windows except the active window
+C-x 2 : split the active window vertically into two horizontal windows
+C-x 3 : split the active window horizontally into two vertical windows
+C-x o : change active window to next window
+
 ensime emacs
 
 C-c C-v e ensime-print-errors-at
@@ -274,12 +326,14 @@ copy: C-c C-p
 SPC f t     NeoTree Toggle
 ¦	        open file in an vertically split window
 -	        open file in an horizontally split window
+R          make current root
+K          doto parent
 
 -- WINDOW
 SPC w h       window on the left
 SPC w l       window on the right
 SPC w m	      maximize/minimize a window 
-SPC w .	    initiate micro-state
+SPC w .	   initiate micro-state
          [	shrink window horizontally
          ]	enlarge window horizontally 
          {	shrink window vertically
@@ -293,6 +347,13 @@ C-c o         open split vertically
 C-g           Quit
 SPC s p       smart search in files
  
+BUFFER
+
+SPC b b list all recent buffers
+SPC f r list all recent file opened 
+
 -- CONFIG
-Config SPC f e d
+Config SPC f e d 
 Reload config SPC f e R
+
+

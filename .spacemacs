@@ -24,7 +24,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;; better-defaults
+     better-defaults
      themes-megapack
      emacs-lisp
      ruby
@@ -32,13 +32,21 @@ values."
      git
      github
      osx
+     dockerfile
+     java
+     emacs-lisp
+     react
      ;; markdown
      ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+             shell-default-height 30
+             shell-default-position 'bottom
+             shell-default-shell 'term)
+     (javascript :variables
+                 javascript-disable-tern-port-files nil)
+     html
      ;; spell-checking
-     ;; syntax-checking
+     ;; syntax-checkig
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -100,7 +108,15 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
+   dotspacemacs-themes '(
+                         material-light
+                         twilight-bright
+                         whiteboard
+                         colorsarenice-light
+                         espresso
+                         soft-stone
+                         soft-morning
+                         spacemacs-light
                          spacemacs-dark
                          solarized-light
                          solarized-dark
@@ -245,6 +261,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq-default
+   require-final-newline t
+   mode-require-final-newline t)
+  (defun highlight-todos ()
+    (font-lock-add-keywords nil '(("\\<\\(NOTE\\|TODO\\|HACK\\|BUG\\):" 1 font-lock-warning-face t))))
+  (add-hook 'prog-mode-hook 'highlight-todos)
   )
 
 (defun dotspacemacs/user-config ()
@@ -254,9 +276,21 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  (setq eclim-eclipse-dirs "/Users/pierrecaserta/java-mars/Eclipse.app/Contents/Eclipse/"
+        eclim-executable "/Users/pierrecaserta/java-mars/Eclipse.app/Contents/Eclipse//eclim")
   (global-linum-mode)
+  (setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
   (auto-fill-mode -1)
-  (setq-default evil-escape-key-sequence "jj")
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2
+   evil-escape-key-sequence "jj")
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
