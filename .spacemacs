@@ -269,6 +269,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (defun highlight-todos ()
     (font-lock-add-keywords nil '(("\\<\\(NOTE\\|TODO\\|HACK\\|BUG\\):" 1 font-lock-warning-face t))))
   (add-hook 'prog-mode-hook 'highlight-todos)
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -283,6 +284,7 @@ you should place you code here."
   (global-linum-mode)
   (setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
   (auto-fill-mode -1)
+  (setq js2-strict-missing-semi-warning nil)
   (setq-default
    ;; js2-mode
    js2-basic-offset 2
@@ -291,8 +293,11 @@ you should place you code here."
    web-mode-markup-indent-offset 2
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
-   web-mode-attr-indent-offset 2
-   evil-escape-key-sequence "jj")
+   web-mode-attr-indent-offset 2)
+  (setq
+   neo-show-hidden-files nil
+   neo-hidden-regexp-list '("\\.DS_Store$" "\\.tern-port$" "\\..*?\\.swp$")
+   )
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -310,3 +315,4 @@ you should place you code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
