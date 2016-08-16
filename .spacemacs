@@ -316,3 +316,4 @@ you should place you code here."
  ;; If there is more than one, they won't work right.
  )
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+(add-hook 'js2-mode-hook 'react-mode)

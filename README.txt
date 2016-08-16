@@ -356,4 +356,5 @@ SPC f r list all recent file opened
 Config SPC f e d 
 Reload config SPC f e R
 
-
+--- text
+ remove all trailing whitespace you can enter SPC x d w
