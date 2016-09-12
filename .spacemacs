@@ -112,19 +112,20 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          material-light
-                         twilight-bright
-                         whiteboard
-                         colorsarenice-light
-                         espresso
-                         soft-stone
-                         soft-morning
-                         spacemacs-light
-                         spacemacs-dark
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+                         ;; twilight-bright
+                         ;; whiteboard
+                         ;; colorsarenice-light
+                         ;; espresso
+                         ;; soft-stone
+                         ;; soft-morning
+                         ;; spacemacs-light
+                         ;; spacemacs-dark
+                         ;; solarized-light
+                         ;; solarized-dark
+                         ;; leuven
+                         ;; monokai
+                         ;; zenburn
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -296,7 +297,7 @@ you should place you code here."
    web-mode-attr-indent-offset 2)
   (setq
    neo-show-hidden-files nil
-   neo-hidden-regexp-list '("\\.DS_Store$" "\\.tern-port$" "\\..*?\\.swp$")
+   neo-hidden-regexp-list '("\\.DS_Store$" "\\.tern-port$" "\\..*?\\.swp$" ".*?\\.pyc$" )
    )
 )
 ;; Do not write anything past this comment. This is where Emacs will
