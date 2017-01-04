@@ -36,6 +36,7 @@ values."
      java
      emacs-lisp
      react
+     ansible
      ;; markdown
      ;; org
      (shell :variables
