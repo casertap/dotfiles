@@ -8,10 +8,9 @@ map <leader>nh :NERDTree .<CR>
 
 nnoremap <leader>nr :NERDTree /Users/pierrecaserta/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems<CR>
 
-command RemoveMultipleBlankLines g/^\_$\n\_^$/d
-
-au BufWritePre * :RemoveMultipleBlankLines
-autocmd BufWritePre * :FixWhitespace
+"command RemoveMultipleBlankLines g/^\_$\n\_^$/d
+"au BufWritePre * :RemoveMultipleBlankLines
+"autocmd BufWritePre * :FixWhitespace
 
 map <Leader>sf :call RunCurrentSpecFile()<CR>
 map <Leader>ss :call RunNearestSpec()<CR>
@@ -93,6 +92,6 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 "Typechecking after writing
-autocmd BufWritePost *.scala :EnTypeCheck
+"autocmd BufWritePost *.scala :EnTypeCheck
 "Easy Type Inspection
-nnoremap <leader>tc :EnTypeCheck<CR>
+"nnoremap <leader>tc :EnTypeCheck<CR>

@@ -140,7 +140,7 @@ nmap <C-t> :TagbarToggle<CR>
 ":StripWhitespace
 Plugin 'ntpeters/vim-better-whitespace'
 set tabstop=2 shiftwidth=2 expandtab
-autocmd BufWritePre * :StripWhitespace
+"autocmd BufWritePre * :StripWhitespace
 
 "--------------------
 "lA command-line fuzzy finder written in Go
@@ -251,8 +251,7 @@ let g:multi_cursor_next_key='<C-b>'
 
 "Plugin 'Chiel92/vim-autoformat'
 "au BufWrite * :Autoformat
-
-au BufWrite * :g/^\_$\n\_^$/d
+"au BufWrite * :g/^\_$\n\_^$/d
 
 call vundle#end()            " required
 
