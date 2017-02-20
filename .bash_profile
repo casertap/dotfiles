@@ -6,4 +6,5 @@ eval "$(rbenv init -)"
 source ~/.aws/source_me
 export ITERM_24BIT=1
 export TERM=xterm-256color
+export EDITOR=/usr/bin/vim
 [ -s "/Users/pierrecaserta/.scm_breeze/scm_breeze.sh" ] && source "/Users/pierrecaserta/.scm_breeze/scm_breeze.sh"
