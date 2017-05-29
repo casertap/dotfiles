@@ -85,8 +85,10 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
-export PATH="/Users/pierrecaserta/local/bin:${PATH}"
+export ANDROID_PLATFORM=/Users/pierrecaserta/Library/Android/sdk/platform-tools
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
+export PATH="/Users/pierrecaserta/local/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:${PATH}"
 
 export PATH="$HOME/.yarn/bin:$PATH"
-export NVM_DIR="$HOME/.nvm" 
+export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
