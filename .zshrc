@@ -85,4 +85,9 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
-export PATH="/Users/pierrecaserta/local/bin:${PATH}"
+export PATH="/Users/pierrecaserta/local/bin:$HOME/.rbenv/bin:$PATH"
+export EDITOR=/usr/bin/vim
+export NVM_DIR="$HOME/.nvm"
+export GOPATH="/Users/pierrecaserta/go"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+eval "$(rbenv init -)"
