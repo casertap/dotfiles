@@ -85,19 +85,14 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
-<<<<<<< HEAD
-export PATH="/Users/pierrecaserta/local/bin:$HOME/.rbenv/bin:$PATH"
+
+export ANDROID_PLATFORM=/Users/pierrecaserta/Library/Android/sdk/platform-tools
+export ANDROID_HOME=/Users/pierrecaserta/Library/Android/sdk
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
+export PATH="/Users/pierrecaserta/local/bin:$HOME/.yarn/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:$HOME/.rbenv/bin:${PATH}"
 export EDITOR=/usr/bin/vim
 export NVM_DIR="$HOME/.nvm"
 export GOPATH="/Users/pierrecaserta/go"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 eval "$(rbenv init -)"
-=======
-export ANDROID_PLATFORM=/Users/pierrecaserta/Library/Android/sdk/platform-tools
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
-export PATH="/Users/pierrecaserta/local/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:${PATH}"
 
-export PATH="$HOME/.yarn/bin:$PATH"
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
->>>>>>> 68338f4d43aa29bcd31519a315f7a876757a8e16
