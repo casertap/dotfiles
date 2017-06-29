@@ -86,9 +86,9 @@ export LANG=en_US.UTF-8
 #
 #
 
-export ANDROID_PLATFORM=/Users/pierrecaserta/Library/Android/sdk/platform-tools
 export ANDROID_HOME=/Users/pierrecaserta/Library/Android/sdk
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
+export ANDROID_PLATFORM=$ANDROID_HOME/platform-tools
+export JAVA_HOME=/Library/Java/Home
 export PATH="/Users/pierrecaserta/local/bin:$HOME/.yarn/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:$HOME/.rbenv/bin:${PATH}"
 export EDITOR=/usr/bin/vim
 export NVM_DIR="$HOME/.nvm"
