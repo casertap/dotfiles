@@ -95,8 +95,9 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
 export ANDROID_NDK=/Users/your_unix_name/android-ndk/android-ndk-r10e
 export GOOGLESDK_BIN="$HOME/google-cloud-sdk/bin"
 export PATH="/Users/pierrecaserta/local/bin:$HOME/.yarn/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:$HOME/.rbenv/bin:${VSCODE_BIN}:${GOOGLESDK_BIN}:${PATH}"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export EDITOR=/usr/bin/vim
 export NVM_DIR="$HOME/.nvm"
 export GOPATH="/Users/pierrecaserta/go"
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+. "/usr/local/opt/nvm/nvm.sh"
