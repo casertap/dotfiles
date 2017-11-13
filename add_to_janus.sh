@@ -15,3 +15,4 @@ git clone https://github.com/kien/rainbow_parentheses.vim.git
 git clone git://github.com/jpalardy/vim-slime.git
 git clone git://github.com/will133/vim-dirdiff
 git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
+git clone https://github.com/plasticboy/vim-markdown.git

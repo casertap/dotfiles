@@ -1,9 +1,10 @@
+set clipboard=unnamed
 set nocompatible
 filetype off
-
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
 "Plugin Manager
 Plugin 'gmarik/Vundle.vim'
@@ -61,6 +62,10 @@ Plugin 'rking/ag.vim'
 "Start searching from your project root instead of the cwd
 let g:ag_working_path_mode="r"
 "----------------------
+
+" Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 "Most RecentlyRecently Used (MRU) Vim Plugin
 Plugin 'yegappan/mru'
@@ -254,6 +259,7 @@ let g:multi_cursor_next_key='<C-b>'
 "au BufWrite * :g/^\_$\n\_^$/d
 
 call vundle#end()            " required
+filetype plugin indent on
 
 "run golint before save
 "autocmd BufWritePost *.go execute 'GoLint' | cwindow
