@@ -86,13 +86,15 @@ export LANG=en_US.UTF-8
 #
 #
 
+export VSCODE_BIN='/Applications/Visual Studio Code.app/Contents/Resources/app/bin/'
 export ANDROID_SDK=/Users/pierrecaserta/Library/Android/sdk
 export ANDROID_NDK=$ANDROID_SDK/ndk-bundle
 export ANDROID_HOME=$ANDROID_SDK
 export ANDROID_PLATFORM=$ANDROID_SDK/platform-tools
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
 export ANDROID_NDK=/Users/your_unix_name/android-ndk/android-ndk-r10e
-export PATH="/Users/pierrecaserta/local/bin:$HOME/.yarn/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:$HOME/.rbenv/bin:${PATH}"
+export GOOGLESDK_BIN="$HOME/google-cloud-sdk/bin"
+export PATH="/Users/pierrecaserta/local/bin:$HOME/.yarn/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:$HOME/.rbenv/bin:${VSCODE_BIN}:${GOOGLESDK_BIN}:${PATH}"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export EDITOR=/usr/bin/vim
 export NVM_DIR="$HOME/.nvm"
