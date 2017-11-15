@@ -107,4 +107,5 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 # TO CREATE A PY3 env
 #VIRTUALENV_PYTHON=/usr/local/bin/python3 mkvirtualenv py3
 
+source ~/.aws/source_me 
 . "/usr/local/opt/nvm/nvm.sh"
