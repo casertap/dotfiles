@@ -346,7 +346,8 @@ SPC p f       fuzzy search
 C-c o         open split vertically 
 C-g           Quit
 SPC s p       smart search in files
- 
+SPC r l       resumes the last helm listing
+
 BUFFER
 
 SPC b b list all recent buffers

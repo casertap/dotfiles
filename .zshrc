@@ -98,8 +98,8 @@ export EDITOR=/usr/bin/vim
 export NVM_DIR="$HOME/.nvm"
 export GOPATH="/Users/pierrecaserta/go"
 export NVM_DIR="$HOME/.nvm"
-export PATH="/Users/pierrecaserta/local/bin:$HOME/.yarn/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:$HOME/.rbenv/bin:${VSCODE_BIN}:${GOOGLESDK_BIN}:${PATH}"
-
+export PATH="/Users/pierrecaserta/local/bin:$HOME/.yarn/bin:${ANDROID_PLATFORM}:${JAVA_HOME}:${VSCODE_BIN}:${GOOGLESDK_BIN}:$GOPATH/bin:${PATH}"
+export JAVA_HOME=$(/usr/libexec/java_home)
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
@@ -107,5 +107,15 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 # TO CREATE A PY3 env
 #VIRTUALENV_PYTHON=/usr/local/bin/python3 mkvirtualenv py3
 
-source ~/.aws/source_me 
+source ~/.aws/source_me
+
+eval "$(rbenv init -)"
+
 . "/usr/local/opt/nvm/nvm.sh"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/pierrecaserta/.nvm/versions/node/v8.1.2/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/pierrecaserta/.nvm/versions/node/v8.1.2/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/pierrecaserta/.nvm/versions/node/v8.1.2/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/pierrecaserta/.nvm/versions/node/v8.1.2/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
