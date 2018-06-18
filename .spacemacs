@@ -35,6 +35,7 @@ values."
      html
      ruby
      javascript
+     osx
      scala
      (setq-default dotspacemacs-configuration-layers '(
        (scala :variables scala-auto-start-ensime t)))
