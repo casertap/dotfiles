@@ -37,8 +37,6 @@ values."
      javascript
      osx
      scala
-     (setq-default dotspacemacs-configuration-layers '(
-       (scala :variables scala-auto-start-ensime t)))
      ;; react
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -393,6 +391,9 @@ you should place your code here."
 	    (message "No region active; can't yank to clipboard!")))
   (spacemacs/set-leader-keys "y" 'yank-to-x-clipboard)
   (global-set-key [f8] 'yank-to-x-clipboard)
+  (setq-default
+     dotspacemacs-configuration-layers '(
+       (scala :variables scala-auto-start-ensime t)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

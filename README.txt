@@ -361,6 +361,11 @@ Reload config SPC f e R
  remove all trailing whitespace you can enter SPC x d w
 
 
+# copy paste vim to clipboard ubuntu
+
+sudo apt-get install xsel
+# f8 or SPC y
+
 ===COPY PASTE tmux====
 
 tmux prefix is Control+b and that you have emacs style key bindings on
