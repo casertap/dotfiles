@@ -59,8 +59,11 @@ sudo apt-key fingerprint 0EBFCD88
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update
 sudo apt-get install -y docker-ce
-sudo apt-get install -y docker-compose
 sudo usermod -aG docker $USER
+sudo sysctl -w vm.max_map_count=262144
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 ###
 # nvidia 
@@ -68,7 +71,12 @@ sudo usermod -aG docker $USER
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
 sudo apt-get install -y nvidia-390
+
 # nvidia-smi
+# Switch driver
+#sudo prime-select intel
+##sudo prime-select nvidia
+#prime-select query
 
 ###
 # docker-nvidia
@@ -126,3 +134,5 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 ## jora
 #pg
 sudo apt-get install -y postgresql-client libpq-dev
+#memcached
+sudo apt-get install -y libsasl2 libsasl2-dev
