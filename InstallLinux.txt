@@ -50,6 +50,8 @@ cd dotfiles && ./add_to_janus.sh
 ###
 # keepassx
 
+sudo apt-get install -y keepassx
+
 ###
 # docker 
 
@@ -121,11 +123,8 @@ sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev li
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-###
-# nodejs
 
-
-#nvm
+##nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 nvm install node
 sudo ln -s /usr/bin/nodejs /usr/bin/node
