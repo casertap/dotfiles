@@ -1,0 +1,58 @@
+Install all packages:
+
+
+sudo apt-get install -y wget git vim zsh
+
+#oh my zsh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+rm ~/.zshrc
+ln -s `pwd`/.zshrc ~/.zshrc
+chsh -s /bin/zsh
+
+# tmux
+sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
+rm -fr /tmp/tmux
+git clone https://github.com/tmux/tmux.git /tmp/tmux
+cd /tmp/tmux
+sh autogen.sh
+./configure && make
+sudo make install
+cd -
+rm -fr /tmp/tmux
+ln -s `pwd`/.tmux.conf ~/.tmux.conf
+
+###
+# vim emacs
+sudo apt-get install -y xsel build-essential gcc g++ texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev gnutls-bin 
+wget http://mirrors.kernel.org/gnu/emacs/emacs-26.1.tar.gz
+tar -zxvf emacs-26.1.tar.gz
+cd emacs-26.1
+./configure --with-gnutls=no --with-mailutils
+make
+sudo make install
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+
+
+
+# copy paste vim to clipboard ubuntu
+
+sudo apt-get install xsel
+# f8 or SPC y
+
+### install emacs/spacemacs on ubuntu
+
+sudo apt-get install -y build-essential wget gcc g++ texinfo libx11-dev
+libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev
+libncurses-dev
+sudo apt-get install -y gnutls-bin
+
+wget http://mirrors.kernel.org/gnu/emacs/emacs-26.1.tar.gz
+
+tar -zxvf emacs-26.1.tar.gz
+cd emacs-26.1
+./configure --with-gnutls=no --with-mailutils
+make
+sudo make install
+
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
