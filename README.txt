@@ -359,3 +359,18 @@ Reload config SPC f e R
 
 --- text
  remove all trailing whitespace you can enter SPC x d w
+
+
+===COPY PASTE tmux====
+
+tmux prefix is Control+b and that you have emacs style key bindings on
+
+1) enter copy mode using Control+b [ 
+2) navigate to beginning of text, you want to select and hit Control+Space
+3) move around using arrow keys to select region
+4) when you reach end of region simply hit Alt+w to copy the region
+5) now Control+b ] will paste the selection
+
+-----> with mouse:
+1) Ctrl + select, right click
+2) Ctrl+b ]
