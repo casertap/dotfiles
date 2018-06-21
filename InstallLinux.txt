@@ -8,6 +8,7 @@ sudo gem install rake
 #system level nodejs npm
 sudo apt-get install -y nodejs npm
 
+sudo sh -c "echo 'sysctl -w vm.max_map_count=262144' >> /etc/sysctl.conf"
 
 #oh my zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -62,7 +63,6 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-get update
 sudo apt-get install -y docker-ce
 sudo usermod -aG docker $USER
-sudo sysctl -w vm.max_map_count=262144
 
 sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
@@ -123,12 +123,17 @@ sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev li
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-
 ##nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 nvm install node
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
+
+## nginx
+sudo apt-get install nginx
+sudo cp ./nginx/jora.conf /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/jora.conf /etc/nginx/sites-enabled/jora.conf
+sudo service nginx restart
 
 ## jora
 #pg
