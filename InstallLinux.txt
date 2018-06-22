@@ -8,7 +8,7 @@ sudo gem install rake
 #system level nodejs npm
 sudo apt-get install -y nodejs npm
 
-sudo sh -c "echo 'sysctl -w vm.max_map_count=262144' >> /etc/sysctl.conf"
+sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 
 #oh my zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
