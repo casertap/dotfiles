@@ -1,7 +1,7 @@
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-sudo apt-get install -y wget git vim zsh
+sudo apt-get install -y wget git vim zsh silversearcher-ag
 #system level ruby
 sudo apt-get install -y ruby-full
 sudo gem install rake
@@ -15,6 +15,15 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 rm ~/.zshrc
 ln -s `pwd`/.zshrc ~/.zshrc
 chsh -s /bin/zsh
+
+#git lfs
+sudo apt-get install -y software-properties-common python-software-properties
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git lfs install
+# git lfs fetch
 
 # tmux
 sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
@@ -107,7 +116,7 @@ sudo apt-get install -y sublime-text
 sudo apt-get install python-setuptools python-dev build-essential
 sudo easy_install pip
 
-sudo pip install virtualenvwrapper
+sudo pip install virtualenvwrapper awscli
 #in .zshrc
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
