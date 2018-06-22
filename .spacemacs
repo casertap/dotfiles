@@ -392,6 +392,7 @@ you should place your code here."
 	    (message "No region active; can't yank to clipboard!")))
   (spacemacs/set-leader-keys "y" 'yank-to-x-clipboard)
   (global-set-key [f8] 'yank-to-x-clipboard)
+  (evil-define-key 'visual evil-surround-mode-map "y" 'yank-to-x-clipboard)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
