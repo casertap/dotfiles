@@ -56,6 +56,7 @@ cd dotfiles && ./add_to_spacemacs.sh
 
 curl -L https://bit.ly/janus-bootstrap | bash
 cd dotfiles && ./add_to_janus.sh
+ln -s ~/Documents/funspace/dotfiles/.vimrc.after ~/.vimrc.after
 
 ###
 # keepassx
@@ -117,6 +118,7 @@ sudo apt-get install python-setuptools python-dev build-essential
 sudo easy_install pip
 
 sudo pip install virtualenvwrapper awscli
+
 #in .zshrc
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
@@ -124,6 +126,15 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 mkvirtualenv --python=/usr/bin/python3 py3
 workon py3
+
+###
+# powerline
+
+sudo pip install git+git://github.com/Lokaltog/powerline
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+sudo mv PowerlineSymbols.otf /usr/share/fonts/
+sudo fc-cache -vf
+sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 
 ###
 # rbenv
