@@ -128,8 +128,7 @@ sudo easy_install pip
 
 sudo pip install virtualenvwrapper awscli
 # requirement to build twisted
-sudo apt-get install -y python3-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev
-
+sudo apt-get install -y python3-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
 
 #in .zshrc
 export WORKON_HOME=$HOME/.virtualenvs
