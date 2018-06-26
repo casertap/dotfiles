@@ -117,9 +117,10 @@ sudo apt-get install -y sublime-text
 sudo add-apt-repository ppa:jonathonf/python-3.6
 sudo apt-get update
 sudo apt-get install -y python3.6
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
-sudo update-alternatives --config python3
+# ubuntu need python3 to point to python3.5 so do not update that
+#sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
+#sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
+#sudo update-alternatives --config python3
 #python3 -V
 
 #system level pip
@@ -135,7 +136,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
-mkvirtualenv --python=/usr/bin/python3 py3
+mkvirtualenv --python=/usr/bin/python3.6 py3
 workon py3
 
 ###
