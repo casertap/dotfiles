@@ -1,7 +1,7 @@
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3
 #system level ruby
 sudo apt-get install -y ruby-full
 sudo gem install rake
@@ -138,6 +138,7 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 mkvirtualenv --python=/usr/bin/python3.6 py3
 workon py3
+pip install yapf flake8 pylint nose mypy
 
 ###
 # powerline

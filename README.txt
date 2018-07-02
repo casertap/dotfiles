@@ -348,6 +348,15 @@ C-g           Quit
 SPC s p       smart search in files
 SPC r l       resumes the last helm listing
 
+-- quick jump
+SPC TAB       move to previous file
+r             at startup for recent file
+
+-- theme
+SPC T s       change theme
+
+
+
 BUFFER
 
 SPC b b list all recent buffers
