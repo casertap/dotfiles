@@ -85,11 +85,7 @@ values."
                                       rjsx-mode
                                       prettier-js
                                       eslintd-fix
-<<<<<<< HEAD
                                       whitespace-cleanup-mode
-                                      doom-themes
-=======
->>>>>>> 814842af573a0a666b0ab629f538383636facc9d
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
