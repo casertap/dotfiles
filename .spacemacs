@@ -35,10 +35,10 @@ values."
      html
      ruby
      javascript
-     osx
      scala
-     (setq-default dotspacemacs-configuration-layers '(
-       (scala :variables scala-auto-start-ensime t)))
+     (setq-default
+      dotspacemacs-configuration-layers '(
+                                          (scala :variables scala-auto-start-ensime t)))
      ;; react
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -85,8 +85,11 @@ values."
                                       rjsx-mode
                                       prettier-js
                                       eslintd-fix
+<<<<<<< HEAD
                                       whitespace-cleanup-mode
                                       doom-themes
+=======
+>>>>>>> 814842af573a0a666b0ab629f538383636facc9d
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -123,7 +126,7 @@ values."
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update nil
+   dotspacemacs-check-for-update t
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
@@ -325,7 +328,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("ag" "grep" "pt" "ack")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -404,4 +407,5 @@ you should place your code here."
 	    (message "No region active; can't yank to clipboard!")))
   (spacemacs/set-leader-keys "y" 'yank-to-x-clipboard)
   (global-set-key [f8] 'yank-to-x-clipboard)
+  ;; (evil-define-key 'visual evil-surround-mode-map "y" 'yank-to-x-clipboard)
   )

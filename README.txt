@@ -348,6 +348,15 @@ C-g           Quit
 SPC s p       smart search in files
 SPC r l       resumes the last helm listing
 
+-- quick jump
+SPC TAB       move to previous file
+r             at startup for recent file
+
+-- theme
+SPC T s       change theme
+
+
+
 BUFFER
 
 SPC b b list all recent buffers
@@ -360,6 +369,11 @@ Reload config SPC f e R
 --- text
  remove all trailing whitespace you can enter SPC x d w
 
+
+# copy paste vim to clipboard ubuntu
+
+sudo apt-get install xsel
+# f8 or SPC y
 
 ===COPY PASTE tmux====
 

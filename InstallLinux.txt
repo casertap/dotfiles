@@ -1,0 +1,175 @@
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3
+#system level ruby
+sudo apt-get install -y ruby-full
+sudo gem install rake
+#system level nodejs npm
+sudo apt-get install -y nodejs npm
+
+sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
+
+#oh my zsh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+rm ~/.zshrc
+ln -s `pwd`/.zshrc ~/.zshrc
+chsh -s /bin/zsh
+
+#git lfs
+sudo apt-get install -y software-properties-common python-software-properties
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git lfs install
+# git lfs fetch
+
+# tmux
+sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
+rm -fr /tmp/tmux
+git clone https://github.com/tmux/tmux.git /tmp/tmux
+cd /tmp/tmux
+sh autogen.sh
+./configure && make
+sudo make install
+cd -
+rm -fr /tmp/tmux
+ln -s `pwd`/.tmux.conf ~/.tmux.conf
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.tmux.conf
+Prefix (Ctrl+b) + I
+
+###
+# vim emacs
+sudo apt-get install -y xsel build-essential gcc g++ texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev gnutls-bin 
+wget http://mirrors.kernel.org/gnu/emacs/emacs-26.1.tar.gz
+tar -zxvf emacs-26.1.tar.gz
+cd emacs-26.1
+./configure --with-gnutls=no --with-mailutils
+make
+sudo make install
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+ln -s `pwd`/.spacemacs ~/.spacemacs
+cd dotfiles && ./add_to_spacemacs.sh
+
+curl -L https://bit.ly/janus-bootstrap | bash
+cd dotfiles && ./add_to_janus.sh
+ln -s ~/Documents/funspace/dotfiles/.vimrc.after ~/.vimrc.after
+
+###
+# keepassx
+
+sudo apt-get install -y keepassx
+
+###
+# docker 
+
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install -y docker-ce
+sudo usermod -aG docker $USER
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+###
+# nvidia 
+
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+sudo apt-get install -y nvidia-390
+
+# nvidia-smi
+# Switch driver
+#sudo prime-select intel
+##sudo prime-select nvidia
+#prime-select query
+
+###
+# docker-nvidia
+
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo pkill -SIGHUP dockerd
+sudo service docker restart
+# docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+
+###
+# sublime text 
+
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install -y sublime-text
+
+###
+# python
+
+#upgrade to 3.6
+sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt-get update
+sudo apt-get install -y python3.6
+# ubuntu need python3 to point to python3.5 so do not update that
+#sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
+#sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
+#sudo update-alternatives --config python3
+#python3 -V
+
+#system level pip
+sudo apt-get install python-setuptools python-dev build-essential
+sudo easy_install pip
+
+sudo pip install virtualenvwrapper awscli
+# requirement to build twisted
+sudo apt-get install -y python3-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
+
+#in .zshrc
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+mkvirtualenv --python=/usr/bin/python3.6 py3
+workon py3
+pip install yapf flake8 pylint nose mypy
+
+###
+# powerline
+
+sudo pip install git+git://github.com/Lokaltog/powerline
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+sudo mv PowerlineSymbols.otf /usr/share/fonts/
+sudo fc-cache -vf
+sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+
+###
+# rbenv
+
+sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+##nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+nvm install node
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+
+## nginx
+sudo apt-get install nginx
+sudo cp ./nginx/jora.conf /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/jora.conf /etc/nginx/sites-enabled/jora.conf
+sudo service nginx restart
+
+## jora
+#pg
+sudo apt-get install -y postgresql-client libpq-dev
+#memcached
+sudo apt-get install -y libsasl2 libsasl2-dev

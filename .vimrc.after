@@ -35,7 +35,11 @@ map <F3> :source ~/vim_session <cr>     " And load session with F3
 let g:rvSaveDirectoryType = 1
 let g:rvSaveDirectoryName="~/.RCSFiles/"
 
+"powerline for vim
+"set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+set laststatus=2
 set t_Co=256
+
 set background=light
 "let g:PaperColor_Light_Override = { 'background' : '#cac39b' , 'cursorline' : '#dfdfff', 'matchparen' : '#d6d6d6' , 'comment' : '#8e908c' }
 colorscheme PaperColor
@@ -95,3 +99,5 @@ au Syntax * RainbowParenthesesLoadBraces
 "autocmd BufWritePost *.scala :EnTypeCheck
 "Easy Type Inspection
 "nnoremap <leader>tc :EnTypeCheck<CR>
+
+
