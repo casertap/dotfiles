@@ -159,10 +159,10 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         soft-stone
                          sanityinc-tomorrow-day
                          sanityinc-solarized-light
                          minimal-light
-                         soft-stone
                          spacemacs-dark
                          ;; flatui
                          ;; apropospriate-light
@@ -359,6 +359,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (sanityinc-tomorrow-day
      (hi-yellow :background "#ffffff" :foreground "#eab711")
       )
+    (soft-stone
+     (js2-error :background "#ff4500" :foreground "#bf1212")
+     (js2-warning :background "#ff4500" :foreground "#bf1212")
+     )
     ))
   )
 

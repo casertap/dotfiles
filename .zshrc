@@ -117,3 +117,10 @@ export NVM_DIR="$HOME/.nvm"
 #if [[ -r /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh ]]; then
 #    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
 #fi
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/pc/.nvm/versions/node/v6.14.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/pc/.nvm/versions/node/v6.14.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/pc/.nvm/versions/node/v6.14.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/pc/.nvm/versions/node/v6.14.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
