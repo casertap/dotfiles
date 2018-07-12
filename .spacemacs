@@ -36,9 +36,10 @@ values."
      ruby
      javascript
      scala
-     (setq-default
-      dotspacemacs-configuration-layers '(
-                                          (scala :variables scala-auto-start-ensime t)))
+     ;; (setq-default
+     ;;  dotspacemacs-configuration-layers '(
+     ;;                                      (scala :variables scala-auto-start-ensime t)))
+
      ;; react
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -60,7 +61,7 @@ values."
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      spell-checking
-     syntax-checking
+     (syntax-checking :variables syntax-checking-enable-by-default t)
      ;; version-control
      python
      better-defaults
@@ -334,7 +335,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup t
    ))
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -361,7 +362,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
       )
     (soft-stone
      (js2-error :background "#ff4500" :foreground "#bf1212")
-     (js2-warning :background "#ff4500" :foreground "#bf1212")
+     (js2-warning :underline "#ff4500" :foreground "#bf1212")
+     (flycheck-error :background "#ff4500" :foreground "#bf1212")
      )
     ))
   )
@@ -391,6 +393,13 @@ you should place your code here."
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'web-mode-hook 'prettier-js-mode)
   (add-hook 'js2-mode-hook 'eslintd-fix-mode)
+  (add-hook 'rjsx-mode-hook
+            (lambda ()
+              (message "running rjsx hook")
+              (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+              (flycheck-mode)
+              ))
+
   (add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
   (setq
      prettier-js-args '(
