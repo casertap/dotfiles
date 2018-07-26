@@ -4,7 +4,7 @@ gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3
 #system level ruby
 sudo apt-get install -y ruby-full
-sudo gem install rake
+sudo gem install rake sass
 #system level nodejs npm
 sudo apt-get install -y nodejs npm
 
@@ -167,6 +167,19 @@ sudo apt-get install nginx
 sudo cp ./nginx/jora.conf /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/jora.conf /etc/nginx/sites-enabled/jora.conf
 sudo service nginx restart
+
+## wine
+
+sudo dpkg --add-architecture i386
+wget -nc https://dl.winehq.org/wine-builds/Release.key
+sudo apt-key add Release.key
+sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+sudo apt-get -y update && sudo apt-get install -y --install-recommends winehq-stable
+sudo apt-get install -y mono-complete
+
+#mkdir ~/.wine/drive_c/installers && mkdir ~/.wine/drive_c/Pictures && mkdir ~/.wine/drive_c/programs
+#mv ~/Downloads/MEDION_Photos_logiciel_de_commande_Setup.exe ~/.wine/drive_c/installers/
+#cd ~/.wine/drive_c/installers && wine MEDION_Photos_logiciel_de_commande_Setup.exe
 
 ## jora
 #pg

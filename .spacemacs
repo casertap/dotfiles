@@ -60,7 +60,7 @@ values."
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     spell-checking
+     ;; spell-checking
      (syntax-checking :variables syntax-checking-enable-by-default t)
      ;; version-control
      python
@@ -390,20 +390,22 @@ you should place your code here."
     (setq linum-format (concat linum-format " ")))
 
   ;; js
+  (add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx$" . rjsx-mode))
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'web-mode-hook 'prettier-js-mode)
   (add-hook 'js2-mode-hook 'eslintd-fix-mode)
-  (add-hook 'rjsx-mode-hook
-            (lambda ()
-              (message "running rjsx hook")
-              (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
-              (flycheck-mode)
-              ))
+  ;; ;; let eslint do the job and not flycheck
+  ;; (add-hook 'rjsx-mode-hook
+  ;;           (lambda ()
+  ;;             (message "running rjsx hook")
+  ;;             (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+  ;;             (flycheck-mode)
+  ;;             ))
 
-  (add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
   (setq
      prettier-js-args '(
-       "--trailing-comma" "all"
+       "--trailing-comma" "es5"
        "--bracket-spacing" "false"))
   (setq x-select-enable-clipboard t)
   (defun yank-to-x-clipboard ()

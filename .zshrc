@@ -124,3 +124,8 @@ export NVM_DIR="$HOME/.nvm"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /home/pc/.nvm/versions/node/v6.14.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/pc/.nvm/versions/node/v6.14.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/pc/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/pc/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
