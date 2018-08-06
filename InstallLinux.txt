@@ -124,9 +124,15 @@ cd emacs-26.1
 ./configure --with-gnutls=no --with-mailutils
 make
 sudo make install
+cd ..
+rm -rf emacs-*
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s `pwd`/.spacemacs ~/.spacemacs
-cd .. && ./add_to_spacemacs.sh
+./add_to_spacemacs.sh
+echo '
+alias emacs="emacs -nw"
+' >> ~/.zshrc
+source ~/.zshrc
 
 curl -L https://bit.ly/janus-bootstrap | bash
 ./add_to_janus.sh
