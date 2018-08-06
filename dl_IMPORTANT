@@ -1,0 +1,14 @@
+#!/bin/zsh
+# use
+# dl_IMPORTANT bucket-name path
+
+. /home/pc/.aws/$1
+
+
+read REPLY\?"Are you sure you what to dl from $1 ? The files from local path $2 will be overwritted"
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+  exit 1
+fi
+aws s3 sync "s3://$1/$2" "~/$2"
