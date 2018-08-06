@@ -25,7 +25,7 @@ sudo apt-get install git-lfs
 git lfs install
 # git lfs fetch
 
-#clone ditfiles
+#clone dotfiles
 mkdir ~/Documents/funspace
 cd ~/Documents/funspace
 git clone https://github.com/casertap/dotfiles.git
@@ -50,6 +50,12 @@ tmux
 tmux source ~/.tmux.conf
 # Install plugins with Prefix (Ctrl+b) + I
 
+##nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+nvm install node
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+npm install -g tern js-beautify jshint eslint_d prettier eslint-plugin-prettier eslint-config-prettier
+
 ###
 # vim emacs
 sudo apt-get install -y xsel build-essential gcc g++ texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev gnutls-bin 
@@ -61,7 +67,7 @@ make
 sudo make install
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s `pwd`/.spacemacs ~/.spacemacs
-cd dotfiles && ./add_to_spacemacs.sh
+cd .. && ./add_to_spacemacs.sh
 
 curl -L https://bit.ly/janus-bootstrap | bash
 cd dotfiles && ./add_to_janus.sh
@@ -164,12 +170,6 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-
-##nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-nvm install node
-sudo ln -s /usr/bin/nodejs /usr/bin/node
-npm install -g tern js-beautify jshint eslint_d prettier eslint-plugin-prettier eslint-config-prettier
 
 ## nginx
 sudo apt-get install nginx
