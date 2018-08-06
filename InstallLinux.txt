@@ -191,12 +191,6 @@ sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev li
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-## nginx
-sudo apt-get install nginx
-sudo cp ./nginx/jora.conf /etc/nginx/sites-available/
-sudo ln -s /etc/nginx/sites-available/jora.conf /etc/nginx/sites-enabled/jora.conf
-sudo service nginx restart
-
 ## wine
 
 sudo dpkg --add-architecture i386
@@ -210,13 +204,8 @@ sudo apt-get install -y mono-complete
 #mv ~/Downloads/MEDION_Photos_logiciel_de_commande_Setup.exe ~/.wine/drive_c/installers/
 #cd ~/.wine/drive_c/installers && wine MEDION_Photos_logiciel_de_commande_Setup.exe
 
-## jora
-#pg
-sudo apt-get install -y postgresql-client libpq-dev
-#memcached
-sudo apt-get install -y libsasl2 libsasl2-dev
+## utils
 
-#commands
 sudo cp `pwd`/dl_from_s3 /usr/local/bin/dl_from_s3
 sudo chmod +x /usr/local/bin/dl_from_s3
 
@@ -257,4 +246,18 @@ sudo reboot
 
 - Switch to intel
 sudo prime-select intel
+
+------ jora
+
+## nginx
+sudo apt-get install nginx
+sudo cp ./nginx/jora.conf /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/jora.conf /etc/nginx/sites-enabled/jora.conf
+sudo service nginx restart
+
+## pg
+sudo apt-get install -y postgresql-client libpq-dev
+
+## memcached
+sudo apt-get install -y libsasl2 libsasl2-dev
 
