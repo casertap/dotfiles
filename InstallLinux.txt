@@ -217,9 +217,11 @@ sudo apt-get install -y postgresql-client libpq-dev
 sudo apt-get install -y libsasl2 libsasl2-dev
 
 #commands
-sudo touch /usr/local/bin/dl_IMPORTANT
-sudo bash -c "echo 'aws s3 sync s3://.../Documents/IMPORTANT ~/Documents/IMPORTANT' > /usr/local/bin/dl_IMPORTANT"
-sudo chmod +x /usr/local/bin/dl_IMPORTANT
+sudo cp `pwd`/dl_from_s3 /usr/local/bin/dl_from_s3
+sudo chmod +x /usr/local/bin/dl_from_s3
+
+sudo cp `pwd`/backup_to_s3 /usr/local/bin/backup_to_s3
+sudo chmod +x /usr/local/bin/backup_to_s3
 
 ---------
 Metabox install ubuntu FIXES
