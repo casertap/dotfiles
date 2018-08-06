@@ -186,3 +186,40 @@ sudo apt-get install -y mono-complete
 sudo apt-get install -y postgresql-client libpq-dev
 #memcached
 sudo apt-get install -y libsasl2 libsasl2-dev
+
+
+---------
+Metabox install ubuntu FIXES
+
+- Fix usb freeze
+
+On the grub menu of the usb key
+Then choose the Ubuntu, 
+press the 'e' key.
+Here go to the line which contains quiet splash at the end and add  acpi=off after these words.
+Then press F10 to boot with these settings.
+
+- go to grub menu
+
+On Startup press ESC
+On the grub command type: normal
+hit Enter, and then tap ESC until the menu is displayed.
+
+- fix startup
+
+On the grub menu
+select the Ubuntu menu entry.
+Press the E key and add the parameter nouveau.modeset=0 at the end of the linux line.
+Press the F10 key and boot into the Ubuntu system 
+
+- First of all install the NVIDIA drivers.
+
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+sudo apt-cache search nvidia
+sudo apt install nvidia-390 nvidia-prime
+sudo reboot
+
+- Switch to intel
+sudo prime-select intel
+
