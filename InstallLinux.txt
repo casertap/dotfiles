@@ -1,7 +1,7 @@
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop
 #system level ruby
 sudo apt-get install -y ruby-full
 sudo gem install rake sass
@@ -246,6 +246,12 @@ sudo reboot
 
 - Switch to intel
 sudo prime-select intel
+
+- fans
+#sudo apt install -y lm-sensors fancontrol
+##sensors
+##pwmconfig
+
 
 ------ jora
 
