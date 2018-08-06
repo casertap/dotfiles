@@ -1,7 +1,7 @@
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop gnome-tweak-tool
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop gnome-tweak-tool fonts-symbola
 gnome-tweaks  # to add the time on the top bar
 #system level ruby
 sudo apt-get install -y ruby-full
