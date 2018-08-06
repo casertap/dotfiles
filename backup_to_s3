@@ -4,4 +4,4 @@
 # backup_to_s3 bucket-name path
 
 . /home/pc/.aws/$1
-aws s3 sync "~/$2" "s3://$1/$2"
+aws s3 sync "/home/pc/$2" "s3://$1/$2"
