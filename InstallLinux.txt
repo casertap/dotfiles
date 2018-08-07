@@ -6,20 +6,19 @@ gnome-tweaks  # to add the time on the top bar
 #system level ruby
 sudo apt-get install -y ruby-full
 sudo gem install rake sass
-#system level nodejs npm
 sudo apt-get install -y nodejs npm
 
 sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 
 ###
 # git lfs
-sudo apt-get install -y software-properties-common python-software-properties
+sudo apt-get install -y python-software-properties
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install git-lfs
+sudo apt-get install -y git-lfs
 git lfs install
-# git lfs fetch
+# git lfs fetch # if a repo has already cloned
 
 ###
 # python
@@ -28,19 +27,13 @@ git lfs install
 sudo add-apt-repository ppa:jonathonf/python-3.6
 sudo apt-get update
 sudo apt-get install -y python3.6
-# ubuntu need python3 to point to python3.5 so do not update that
-#sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
-#sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
-#sudo update-alternatives --config python3
-#python3 -V
 
-#system level pip
 sudo apt-get install -y python-setuptools python-dev build-essential
 #sudo easy_install pip
 sudo apt install -y python-pip
 
 sudo pip install virtualenvwrapper awscli
-# requirement to build twisted
+# requirements to build twisted
 sudo apt-get install -y python3-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
 
 ###
@@ -257,7 +250,7 @@ Press the F10 key and boot into the Ubuntu system
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
 sudo apt-cache search nvidia
-sudo apt install nvidia-390 nvidia-prime
+sudo apt install -y nvidia-390 nvidia-prime
 sudo reboot
 
 - Switch to intel
