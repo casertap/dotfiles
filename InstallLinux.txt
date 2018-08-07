@@ -255,6 +255,14 @@ sudo prime-select intel
 
 
 - Sound problem on 18.04 (not fixed)
+#https://help.ubuntu.com/community/SoundTroubleshootingProcedure
+
+sudo lspci
+wget -O alsa-info.sh http://www.alsa-project.org/alsa-info.sh && chmod +x ./alsa-info.sh && ./alsa-info.sh
+bash alsa-info.sh --stdout
+dmesg | grep hda
+aplay -l
+
 sudo vim /etc/default/speech-dispatcher
 sudo apt-get remove --purge alsa-base pulseaudio
 mv /etc/modprobe.d/alsa-base.conf /etc/modprobe.d/alsa-base.bk
@@ -262,9 +270,10 @@ sudo apt-get install -y alsa-base pulseaudio pavucontrol libcanberra-pulse
 killall pulseaudio; rm -r ~/.config/pulse/*
 pulseaudio -k
 pulseaudio --start
-pavucontrol
+alsactl init
 sudo alsa force-reload
-alsamixer
+#alsamixer
+#pavucontrol
 
 ------ jora
 
