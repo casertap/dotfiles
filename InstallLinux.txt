@@ -62,9 +62,10 @@ sudo chmod +x /usr/local/bin/backup_to_s3
 ###
 # oh my zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-rm ~/.zshrc
-ln -s `pwd`/.zshrc ~/.zshrc
+# rm ~/.zshrc
+# ln -s `pwd`/.zshrc ~/.zshrc
 chsh -s /bin/zsh
+sudo reboot
 
 
 #clone dotfiles
