@@ -1,7 +1,7 @@
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop gnome-tweak-tool fonts-symbola
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop gnome-tweak-tool fonts-symbola inkscape
 gnome-tweaks  # to add the time on the top bar
 #system level ruby
 sudo apt-get install -y ruby-full
@@ -253,6 +253,18 @@ sudo prime-select intel
 ##sensors
 ##pwmconfig
 
+
+- Sound problem on 18.04 (not fixed)
+sudo vim /etc/default/speech-dispatcher
+sudo apt-get remove --purge alsa-base pulseaudio
+mv /etc/modprobe.d/alsa-base.conf /etc/modprobe.d/alsa-base.bk
+sudo apt-get install -y alsa-base pulseaudio pavucontrol libcanberra-pulse 
+killall pulseaudio; rm -r ~/.config/pulse/*
+pulseaudio -k
+pulseaudio --start
+pavucontrol
+sudo alsa force-reload
+alsamixer
 
 ------ jora
 
