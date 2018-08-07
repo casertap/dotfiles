@@ -76,7 +76,7 @@ sh autogen.sh
 sudo make install
 cd -
 rm -fr /tmp/tmux
-ln -s `pwd`/.tmux.conf ~/.tmux.conf
+ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # start tmux
@@ -127,7 +127,7 @@ sudo make install
 cd ..
 rm -rf emacs-*
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-ln -s `pwd`/.spacemacs ~/.spacemacs
+ln -s ~/Documents/funspace/dotfiles/.spacemacs ~/.spacemacs
 ./add_to_spacemacs.sh
 echo '
 alias emacs="emacs -nw"
