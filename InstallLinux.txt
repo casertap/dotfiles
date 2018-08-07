@@ -44,9 +44,8 @@ sudo apt-get install -y keepassx
 # Copy the aws cred
 
 ## get dotfiles
-
-mkdir Documents/funspace
-cd Documents/funspace
+mkdir ~/Documents/funspace
+cd ~/Documents/funspace
 git clone https://github.com/casertap/dotfiles.git
 cd dotfiles
 
@@ -66,13 +65,6 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 # ln -s `pwd`/.zshrc ~/.zshrc
 chsh -s /bin/zsh
 sudo reboot
-
-
-#clone dotfiles
-mkdir ~/Documents/funspace
-cd ~/Documents/funspace
-git clone https://github.com/casertap/dotfiles.git
-cd dotfiles
 
 # tmux
 sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
@@ -111,29 +103,16 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 sudo apt-get update
 sudo apt-get install -y sublime-text
 
-
-###in .zshrc
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
-####
-source ~/.zshrc
-mkvirtualenv --python=/usr/bin/python3.6 py3
-workon py3
-pip install yapf flake8 pylint nose mypy
-deactivate
-
 ##nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 echo '
-export NVM_DIR="$HOME/.nvm "
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 ' >> ~/.zshrc
 source ~/.zshrc
 nvm install node
-sudo ln -s /usr/bin/nodejs /usr/bin/node
+#sudo ln -s /usr/bin/nodejs /usr/bin/node
 npm install -g tern js-beautify jshint eslint_d prettier eslint-plugin-prettier eslint-config-prettier
 
 ###
@@ -158,6 +137,18 @@ source ~/.zshrc
 curl -L https://bit.ly/janus-bootstrap | bash
 ./add_to_janus.sh
 ln -s ~/Documents/funspace/dotfiles/.vimrc.after ~/.vimrc.after
+
+###in .zshrc
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+####
+source ~/.zshrc
+mkvirtualenv --python=/usr/bin/python3.6 py3
+workon py3
+pip install yapf flake8 pylint nose mypy
+deactivate
 
 
 ###
