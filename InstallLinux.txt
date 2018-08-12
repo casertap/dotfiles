@@ -77,6 +77,9 @@ sudo make install
 cd -
 rm -fr /tmp/tmux
 ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
+echo '
+DISABLE_AUTO_TITLE=true
+' >> ~/.zshrc
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # start tmux
@@ -196,23 +199,41 @@ sudo service docker restart
 ###
 # rbenv
 
-sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+source ~/.zshrc
 
 ## wine
 
 sudo dpkg --add-architecture i386
-wget -nc https://dl.winehq.org/wine-builds/Release.key
-sudo apt-key add Release.key
-sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+#wget -nc https://dl.winehq.org/wine-builds/Release.key
+#sudo apt-key add Release.key
+#sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
+sudo apt-add-repository 'deb http://dl.winehq.org/wine-builds/ubuntu/ artful main'
+
 sudo apt-get -y update && sudo apt-get install -y --install-recommends winehq-stable
+#wine --version
 sudo apt-get install -y mono-complete
 
-#mkdir ~/.wine/drive_c/installers && mkdir ~/.wine/drive_c/Pictures && mkdir ~/.wine/drive_c/programs
+#mkdir -p ~/.wine/drive_c/installers && mkdir ~/.wine/drive_c/Pictures && mkdir ~/.wine/drive_c/programs
 #mv ~/Downloads/MEDION_Photos_logiciel_de_commande_Setup.exe ~/.wine/drive_c/installers/
 #cd ~/.wine/drive_c/installers && wine MEDION_Photos_logiciel_de_commande_Setup.exe
+#wine ~/.wine/drive_c/programs/medion_photos/MEDION\ Photos\ logiciel\ de\ commande/MEDION\ Photos\ logiciel\ de\ commande.ex
 
+#adobe reader
+
+#sudo apt install -y libxml2:i386 gdebi-core
+#wget ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb
+#sudo gdebi AdbeRdr9.5.5-1_i386linux_enu.deb
+
+sudo apt install -y wine-stable winetricks
+winetricks mspatcha
+wget https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/1800920044/AcroRdrDC1800920044_en_US.exe
+wine AcroRdrDC1800920044_en_US.exe
 
 ---------
 Metabox install ubuntu FIXES
