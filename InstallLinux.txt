@@ -1,7 +1,7 @@
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop gnome-tweak-tool fonts-symbola inkscape
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop gnome-tweak-tool fonts-symbola inkscape webhttrack httrack
 gnome-tweaks  # to add the time on the top bar
 #system level ruby
 sudo apt-get install -y ruby-full
@@ -277,31 +277,34 @@ sudo prime-select intel
 
 
 - Sound problem on 18.04 (not fixed)
-#https://help.ubuntu.com/community/SoundTroubleshootingProcedure
+#### #https://help.ubuntu.com/community/SoundTroubleshootingProcedure
+#### sudo lspci
+#### wget -O alsa-info.sh http://www.alsa-project.org/alsa-info.sh && chmod +x ./alsa-info.sh && ./alsa-info.sh
+#### bash alsa-info.sh --stdout
+#### dmesg | grep hda
+#### aplay -l
+#### sudo vim /etc/default/speech-dispatcher
+#### sudo apt-get remove --purge alsa-base pulseaudio
+#### mv /etc/modprobe.d/alsa-base.conf /etc/modprobe.d/alsa-base.bk
+#### sudo apt-get install -y alsa-base pulseaudio pavucontrol libcanberra-pulse 
+#### killall pulseaudio; rm -r ~/.config/pulse/*
+#### pulseaudio -k
+#### pulseaudio --start
+#### alsactl init
+#### sudo alsa force-reload
+#### #alsamixer
+#### #pavucontrol
+#### #from troubleshoot doc =>
+#### sudo apt-get update;sudo apt-get dist-upgrade; sudo apt-get install pavucontrol linux-sound-base alsa-base alsa-utils lightdm ubuntu-desktop  linux-image-`uname -r` libasound2; sudo apt-get -y --reinstall install linux-sound-base alsa-base alsa-utils lightdm ubuntu-desktop  linux-image-`uname -r` libasound2; killall pulseaudio; rm -r ~/.pulse*; ubuntu-support-status; sudo usermod -aG `cat /etc/group | grep -e '^pulse:' -e '^audio:' -e '^pulse-access:' -e '^pulse-rt:' -e '^video:' | awk -F: '{print $1}' | tr '\n' ',' | sed 's:,$::g'` `whoami`
 
-sudo lspci
-wget -O alsa-info.sh http://www.alsa-project.org/alsa-info.sh && chmod +x ./alsa-info.sh && ./alsa-info.sh
-bash alsa-info.sh --stdout
-dmesg | grep hda
-aplay -l
+#### cat /proc/asound/{version,cards,devices,hwdep,pcm,seq/clients}; ls -l /usr/share/pulseaudio/alsa-mixer/paths/; sudo rm /etc/asound.conf; sudo rm -r ~/.pulse ~/.asound* ;sudo rm ~/.pulse-cookie; sudo apt-get update; sudo apt-get install aptitude; sudo aptitude install paman gnome-alsamixer libasound2-plugins padevchooser libsdl1.2debian-pulseaudio; sudo lshw -short;ls -lart /dev/snd; find /lib/modules/`uname -r` | grep snd ;cat /dev/sndstat; lspci -nn; lsusb; sudo which alsactl; sudo fuser -v /dev/dsp /dev/snd/* ; dpkg -S bin/slmodemd; dmesg | egrep 'EMU|probe|emu|ALSA|alsa|ac97|udi|snd|ound|irmware'; sudo /etc/init.d/sl-modem-daemon status; sudo grep model /etc/modprobe.d/* ; sudo dmidecode|egrep 'anufact|roduct|erial|elease'; lsmod | egrep 'snd|usb|midi|udio'; pacmd list-sinks; aplay -l; sudo alsa force-reload;  ubuntu-support-status ; sudo lshw -C sound
 
-sudo vim /etc/default/speech-dispatcher
-sudo apt-get remove --purge alsa-base pulseaudio
+### SOLUTION:
+#https://truejournals.com/2017/06/04/linux-on-sager-p8950-clevo-p950hp6/
 mv /etc/modprobe.d/alsa-base.conf /etc/modprobe.d/alsa-base.bk
-sudo apt-get install -y alsa-base pulseaudio pavucontrol libcanberra-pulse 
-killall pulseaudio; rm -r ~/.config/pulse/*
-pulseaudio -k
-pulseaudio --start
-alsactl init
-sudo alsa force-reload
-#alsamixer
-#pavucontrol
-
-#from troubleshoot doc =>
-sudo apt-get update;sudo apt-get dist-upgrade; sudo apt-get install pavucontrol linux-sound-base alsa-base alsa-utils lightdm ubuntu-desktop  linux-image-`uname -r` libasound2; sudo apt-get -y --reinstall install linux-sound-base alsa-base alsa-utils lightdm ubuntu-desktop  linux-image-`uname -r` libasound2; killall pulseaudio; rm -r ~/.pulse*; ubuntu-support-status; sudo usermod -aG `cat /etc/group | grep -e '^pulse:' -e '^audio:' -e '^pulse-access:' -e '^pulse-rt:' -e '^video:' | awk -F: '{print $1}' | tr '\n' ',' | sed 's:,$::g'` `whoami`
-
-cat /proc/asound/{version,cards,devices,hwdep,pcm,seq/clients}; ls -l /usr/share/pulseaudio/alsa-mixer/paths/; sudo rm /etc/asound.conf; sudo rm -r ~/.pulse ~/.asound* ;sudo rm ~/.pulse-cookie; sudo apt-get update; sudo apt-get install aptitude; sudo aptitude install paman gnome-alsamixer libasound2-plugins padevchooser libsdl1.2debian-pulseaudio; sudo lshw -short;ls -lart /dev/snd; find /lib/modules/`uname -r` | grep snd ;cat /dev/sndstat; lspci -nn; lsusb; sudo which alsactl; sudo fuser -v /dev/dsp /dev/snd/* ; dpkg -S bin/slmodemd; dmesg | egrep 'EMU|probe|emu|ALSA|alsa|ac97|udi|snd|ound|irmware'; sudo /etc/init.d/sl-modem-daemon status; sudo grep model /etc/modprobe.d/* ; sudo dmidecode|egrep 'anufact|roduct|erial|elease'; lsmod | egrep 'snd|usb|midi|udio'; pacmd list-sinks; aplay -l; sudo alsa force-reload;  ubuntu-support-status ; sudo lshw -C sound
-
+sudo sh -c "echo 'options snd-hda-intel model=no-primary-hp power_save=1' > /etc/modprobe.d/alsa.conf"
+sudo reboot
+amixer -c 0 sset Headphone 100% unmute
 
 ------ jora
 
