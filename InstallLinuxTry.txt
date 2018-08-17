@@ -1,0 +1,99 @@
+# SOUND PROBLEM
+
+#### #https://help.ubuntu.com/community/SoundTroubleshootingProcedure
+#### sudo lspci
+#### wget -O alsa-info.sh http://www.alsa-project.org/alsa-info.sh && chmod +x ./alsa-info.sh && ./alsa-info.sh
+#### bash alsa-info.sh --stdout
+#### dmesg | grep hda
+#### aplay -l
+#### sudo vim /etc/default/speech-dispatcher
+#### sudo apt-get remove --purge alsa-base pulseaudio
+#### mv /etc/modprobe.d/alsa-base.conf /etc/modprobe.d/alsa-base.bk
+#### sudo apt-get install -y alsa-base pulseaudio pavucontrol libcanberra-pulse 
+#### killall pulseaudio; rm -r ~/.config/pulse/*
+#### pulseaudio -k
+#### pulseaudio --start
+#### alsactl init
+#### sudo alsa force-reload
+#### #alsamixer
+#### #pavucontrol
+#### #from troubleshoot doc =>
+#### sudo apt-get update;sudo apt-get dist-upgrade; sudo apt-get install pavucontrol linux-sound-base alsa-base alsa-utils lightdm ubuntu-desktop  linux-image-`uname -r` libasound2; sudo apt-get -y --reinstall install linux-sound-base alsa-base alsa-utils lightdm ubuntu-desktop  linux-image-`uname -r` libasound2; killall pulseaudio; rm -r ~/.pulse*; ubuntu-support-status; sudo usermod -aG `cat /etc/group | grep -e '^pulse:' -e '^audio:' -e '^pulse-access:' -e '^pulse-rt:' -e '^video:' | awk -F: '{print $1}' | tr '\n' ',' | sed 's:,$::g'` `whoami`
+
+#### cat /proc/asound/{version,cards,devices,hwdep,pcm,seq/clients}; ls -l /usr/share/pulseaudio/alsa-mixer/paths/; sudo rm /etc/asound.conf; sudo rm -r ~/.pulse ~/.asound* ;sudo rm ~/.pulse-cookie; sudo apt-get update; sudo apt-get install aptitude; sudo aptitude install paman gnome-alsamixer libasound2-plugins padevchooser libsdl1.2debian-pulseaudio; sudo lshw -short;ls -lart /dev/snd; find /lib/modules/`uname -r` | grep snd ;cat /dev/sndstat; lspci -nn; lsusb; sudo which alsactl; sudo fuser -v /dev/dsp /dev/snd/* ; dpkg -S bin/slmodemd; dmesg | egrep 'EMU|probe|emu|ALSA|alsa|ac97|udi|snd|ound|irmware'; sudo /etc/init.d/sl-modem-daemon status; sudo grep model /etc/modprobe.d/* ; sudo dmidecode|egrep 'anufact|roduct|erial|elease'; lsmod | egrep 'snd|usb|midi|udio'; pacmd list-sinks; aplay -l; sudo alsa force-reload;  ubuntu-support-status ; sudo lshw -C sound
+
+
+
+
+- slow wifi with
+https://ubuntuforums.org/showthread.php?t=2178850
+https://ubuntuforums.org/showthread.php?t=2175345
+https://www.unixblogger.com/the-pain-of-an-realtek-rtl8111rtl8168-ethernet-card/
+https://askubuntu.com/questions/660751/internet-is-extremely-slow-on-ubuntu-with-realtek-8168-rev-09
+https://github.com/lwfinger/rtlwifi_new
+
+lsmod
+lspci -nnk
+lsmod | grep r8169
+lsmod | grep pci
+iwconfig
+iwlist wlo1 scan
+
+#### # try1
+#### sudo apt-get install -y r8168-dkms
+#### sudo reboot
+
+#### # try2
+#### sudo sh -c 'echo blacklist r8169 >> /etc/modprobe.d/blacklist.conf'
+#### sudo reboot
+
+#### # try3
+#### sudo apt-get install -y build-essential linux-headers-`uname -r`
+#### wget http://146.83.181.4/~frubilar/broadcom/0010-r8168-8.045.08.tar.bz2
+#### sha256sum 0010-r8168-8.045.08.tar.bz2
+#### tar -xjf 0010-r8168-8.045.08.tar.bz2 
+#### cd r8168-8.045.08/
+#### sudo make
+#### sudo make install
+
+#### # try4
+#### sudo apt-get install -y libelf-dev
+#### sudo apt-get install -y --reinstall r8168-dkms
+#### cd /var/lib/dkms/r8168/8.045.08
+#### sudo reboot
+
+#### # try5
+#### #https://www.unixblogger.com/how-to-get-your-realtek-rtl8111rtl8168-working-updated-guide/
+
+#### sudo mokutil --disable-validation
+#### dkms status
+#### sudo apt-get remove r8168-dkms
+#### dkms status
+#### sudo reboot
+#### cd r8168-8.046.00
+#### sudo apt install -y ca-certificates
+#### sudo ./autorun.sh
+#### ###DONT DO THAT!!!!!
+#### sudo apt install -y ethtool
+#### sudo ethtool -i wlo1
+#### modinfo r8168
+
+#### #try6
+#### sudo modprobe -rfv iwlwifi
+#### ##output##remove (/sbin/lsmod | grep -o -e ^iwlmvm -e ^iwldvm -e ^iwlwifi | xargs /sbin/rmmod) && /sbin/modprobe -r mac80211
+#### ##output##rmmod mac80211
+#### ##output##rmmod cfg80211
+#### sudo ./autorun.sh
+
+#### #try7
+#### sudo lshw -C network
+#### sudo  lspci -v
+#### i#sudo vim /etc/modprobe.d/iwlwifi.conf
+#### modinfo iwlwifi
+#### sudo modprobe iwlwifi 11n_disable=0
+#### sudo modprobe iwlwifi power_save=disable
+
+#### sudo vim /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+#### #wifi.powersave located in /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf from 3 (enabled) to 2 (disabled).
+#### sudo iwconfig wlo1 power off
+#### grep [[:alnum:]] /sys/module/iwlwifi/parameters/*
