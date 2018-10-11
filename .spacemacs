@@ -382,8 +382,8 @@ you should place your code here."
   ;; PYTHON
   (add-hook 'python-mode-hook '(lambda () (pyvenv-workon "py3")))
   (add-hook 'python-mode-hook 'anaconda-mode)
-  ;; (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-  ;; (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+  (add-hook 'after-init-hook 'global-company-mode)
   (global-company-mode)
   (unless (display-graphic-p)
     (setq linum-format "%3s "))
@@ -403,7 +403,10 @@ you should place your code here."
   ;;             (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
   ;;             (flycheck-mode)
   ;;             ))
-
+  (eval-after-load 'scss-mode
+    '(add-hook 'scss-mode-hook
+               (lambda ()
+                 (add-hook 'before-save-hook 'web-beautify-css t t))))
   (setq
      prettier-js-args '(
        "--trailing-comma" "es5"

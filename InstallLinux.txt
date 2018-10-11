@@ -1,8 +1,8 @@
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop gnome-tweak-tool fonts-symbola inkscape webhttrack httrack tree
-gnome-tweaks  # to add the time on the top bar
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk
+
 #system level ruby
 sudo apt-get install -y ruby-full
 sudo gem install rake sass
@@ -67,19 +67,25 @@ chsh -s /bin/zsh
 sudo reboot
 
 # tmux
-sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
-rm -fr /tmp/tmux
-git clone https://github.com/tmux/tmux.git /tmp/tmux
-cd /tmp/tmux
-sh autogen.sh
+wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8-rc.tar.gz
+tar -zxvf tmux-2.8-rc.tar.gz
 ./configure && make
 sudo make install
-cd -
-rm -fr /tmp/tmux
 ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
-echo '
-DISABLE_AUTO_TITLE=true
-' >> ~/.zshrc
+
+## sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
+## rm -fr /tmp/tmux
+## git clone https://github.com/tmux/tmux.git /tmp/tmux
+## cd /tmp/tmux
+## sh autogen.sh
+## ./configure && make
+## sudo make install
+## cd -
+## rm -fr /tmp/tmux
+## ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
+## echo '
+## DISABLE_AUTO_TITLE=true
+## ' >> ~/.zshrc
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # start tmux
