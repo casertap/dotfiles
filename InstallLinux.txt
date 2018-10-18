@@ -32,7 +32,7 @@ sudo apt-get install -y python-setuptools python-dev build-essential
 #sudo easy_install pip
 sudo apt install -y python-pip
 
-sudo pip install virtualenvwrapper awscli
+sudo pip install virtualenvwrapper awscli pipenv
 # requirements to build twisted
 sudo apt-get install -y python3-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
 
