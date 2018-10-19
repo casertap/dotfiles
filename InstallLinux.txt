@@ -241,6 +241,13 @@ winetricks mspatcha
 wget https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/1800920044/AcroRdrDC1800920044_en_US.exe
 wine AcroRdrDC1800920044_en_US.exe
 
+# codec
+sudo apt-get update
+sudo apt-get install -y ffmpeg x264 x265 bc mp4v2-utils
+sudo wget https://raw.githubusercontent.com/KrumpetPirate/AAXtoMP3/master/AAXtoMP3 -O /usr/local/bin/AAXtoMP3
+sudo chmod +x /usr/local/bin/AAXtoMP3
+
+
 ---------
 Metabox install ubuntu FIXES
 
