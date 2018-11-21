@@ -32,7 +32,7 @@ sudo apt-get install -y python-setuptools python-dev build-essential
 #sudo easy_install pip
 sudo apt install -y python-pip
 
-sudo pip install virtualenvwrapper awscli
+sudo pip install virtualenvwrapper awscli pipenv
 # requirements to build twisted
 sudo apt-get install -y python3-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
 
@@ -190,6 +190,9 @@ sudo apt-get install -y nvidia-390
 ##sudo prime-select nvidia
 #prime-select query
 
+# TO UPDATE GPG SIGNATURE
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+
 ###
 # docker-nvidia
 
@@ -240,6 +243,13 @@ sudo apt install -y wine-stable winetricks
 winetricks mspatcha
 wget https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/1800920044/AcroRdrDC1800920044_en_US.exe
 wine AcroRdrDC1800920044_en_US.exe
+
+# codec
+sudo apt-get update
+sudo apt-get install -y ffmpeg x264 x265 bc mp4v2-utils
+sudo wget https://raw.githubusercontent.com/KrumpetPirate/AAXtoMP3/master/AAXtoMP3 -O /usr/local/bin/AAXtoMP3
+sudo chmod +x /usr/local/bin/AAXtoMP3
+
 
 ---------
 Metabox install ubuntu FIXES
