@@ -1,17 +1,22 @@
-gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
-gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+#gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+#gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+
+## SYSTEM SOFT
 
 sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk
-
-#system level ruby
-sudo apt-get install -y ruby-full
-sudo gem install rake sass
-sudo apt-get install -y nodejs npm
-
 sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 
-###
-# git lfs
+## SYSTEM RUBY
+
+sudo apt-get install -y ruby-full
+sudo gem install rake sass
+
+## SYSTEM NODE 
+
+sudo apt-get install -y nodejs npm
+
+## GIT LFS
+
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -19,8 +24,7 @@ sudo apt-get install -y git-lfs
 git lfs install
 # git lfs fetch # if a repo has already cloned
 
-###
-# python
+## PYTHON
 
 sudo apt-get install -y python-setuptools python-dev build-essential
 sudo apt install -y python-pip
@@ -28,35 +32,34 @@ sudo apt install -y python-pip
 sudo add-apt-repository ppa:jonathonf/python-3.6
 sudo apt-get update
 sudo apt-get install -y python3.6
-
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
 sudo update-alternatives  --set python /usr/bin/python3.6
 sudo apt-get install -y python3-pip
 python3 -m pip install --user --upgrade pip==9.0.3
-
 sudo mv /usr/bin/pip /usr/bin/pip2
 sudo ln -s /usr/bin/pip3 pip
-pip --version
 
+## SYSTEM PYTHON PACKAGES
+
+pip --version
 sudo pip install virtualenvwrapper awscli pipenv
 # requirements to build twisted
 sudo apt-get install -y libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
 
-###
-# keepassx
+## KEEPASS
 
 sudo apt-get install -y keepassx
 # Copy the db key
 # Copy the aws cred
 
-## get dotfiles
+## DOTFILES
+
 mkdir ~/Documents/funspace
 cd ~/Documents/funspace
 git clone https://github.com/casertap/dotfiles.git
 cd dotfiles
 
-###
-# utils
+## GET IMPORTANT
 
 sudo cp `pwd`/dl_from_s3 /usr/local/bin/dl_from_s3
 sudo chmod +x /usr/local/bin/dl_from_s3
@@ -64,45 +67,7 @@ sudo cp `pwd`/backup_to_s3 /usr/local/bin/backup_to_s3
 sudo chmod +x /usr/local/bin/backup_to_s3
 #dl_from_s3 bucket path
 
-###
-# oh my zsh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-# rm ~/.zshrc
-# ln -s `pwd`/.zshrc ~/.zshrc
-chsh -s /bin/zsh
-sudo reboot
-
-# tmux
-wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
-tar -zxvf tmux-2.8-rc.tar.gz
-./configure && make
-sudo make install
-ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
-
-## sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
-## rm -fr /tmp/tmux
-## git clone https://github.com/tmux/tmux.git /tmp/tmux
-## cd /tmp/tmux
-## sh autogen.sh
-## ./configure && make
-## sudo make install
-## cd -
-## rm -fr /tmp/tmux
-## ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
-## echo '
-## DISABLE_AUTO_TITLE=true
-## ' >> ~/.zshrc
-
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-# start tmux
-tmux
-# source plugins
-tmux source ~/.tmux.conf
-# Install plugins with Prefix (Ctrl+b) + I
-
-
-###
-# powerline
+## POWERLINE
 
 sudo pip install git+git://github.com/Lokaltog/powerline
 wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
@@ -110,24 +75,35 @@ sudo mv PowerlineSymbols.otf /usr/share/fonts/
 sudo fc-cache -vf
 sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 
-###
-# sublime text 
+## TMUX
+
+sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
+wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
+tar -zxvf tmux-2.8.tar.gz
+cd tmux-2.8
+./configure && make
+sudo make install
+ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux
+tmux source ~/.tmux.conf
+# Install plugins with Prefix (Ctrl+b) + I
+
+## SUBLIME 
 
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt-get update
 sudo apt-get install -y sublime-text
 
-##nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-echo '
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-' >> ~/.zshrc
+## NVM
+
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+mkdir ~/.nvm
 source ~/.zshrc
 nvm install node
-#sudo ln -s /usr/bin/nodejs /usr/bin/node
+nvm install 8
+nvm alias default 8
 npm install -g tern js-beautify jshint eslint_d prettier eslint-plugin-prettier eslint-config-prettier
 
 ###
@@ -152,6 +128,16 @@ source ~/.zshrc
 curl -L https://bit.ly/janus-bootstrap | bash
 ./add_to_janus.sh
 ln -s ~/Documents/funspace/dotfiles/.vimrc.after ~/.vimrc.after
+
+
+###
+# oh my zsh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# rm ~/.zshrc
+# ln -s `pwd`/.zshrc ~/.zshrc
+chsh -s /bin/zsh
+sudo reboot
+
 
 ###in .zshrc
 export WORKON_HOME=$HOME/.virtualenvs
