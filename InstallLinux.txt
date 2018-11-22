@@ -11,6 +11,12 @@ sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 sudo apt-get install -y ruby-full
 sudo gem install rake sass
 
+## RBENV
+
+sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
 ## SYSTEM NODE 
 
 sudo apt-get install -y nodejs npm
@@ -128,11 +134,19 @@ curl -L https://bit.ly/janus-bootstrap | bash
 ./add_to_janus.sh
 ln -s ~/Documents/funspace/dotfiles/.vimrc.after ~/.vimrc.after
 
+## GO
+
+wget https://dl.google.com/go/go1.11.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.11.2.linux-amd64.tar.gz
+mkdir -p ~/go/bin ~/go/src ~/go/pkg  
+mkdir -p ~/golib/bin ~/golib/src ~/golib/pkg 
+curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+
 ## ZSH
 
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-# rm ~/.zshrc
-# ln -s `pwd`/.zshrc ~/.zshrc
+rm ~/.zshrc
+ln -s `pwd`/.zshrc ~/.zshrc
 chsh -s /bin/zsh
 sudo reboot
 
@@ -154,24 +168,11 @@ sudo apt-get install -y docker-ce
 sudo usermod -aG docker $USER
 grep 'docker' /etc/group
 
-sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-
 sudo reboot
 
-###
-# nvidia 
-
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update
-sudo apt-get install -y nvidia-driver-415
-
-#nvidia-smi
-#sudo prime-select intel|nvidia|query
-
-
-###
-# docker-nvidia
+## docker-nvidia
 
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
@@ -181,16 +182,6 @@ sudo apt-get install -y nvidia-docker2
 sudo pkill -SIGHUP dockerd
 sudo service docker restart
 # docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
-
-###
-# rbenv
-
-sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(rbenv init -)"' >> ~/.zshrc
-source ~/.zshrc
 
 ## wine
 
