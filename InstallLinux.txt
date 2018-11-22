@@ -12,7 +12,6 @@ sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 
 ###
 # git lfs
-sudo apt-get install -y python-software-properties
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -23,18 +22,25 @@ git lfs install
 ###
 # python
 
+sudo apt-get install -y python-setuptools python-dev build-essential
+sudo apt install -y python-pip
 #upgrade to 3.6
 sudo add-apt-repository ppa:jonathonf/python-3.6
 sudo apt-get update
 sudo apt-get install -y python3.6
 
-sudo apt-get install -y python-setuptools python-dev build-essential
-#sudo easy_install pip
-sudo apt install -y python-pip
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+sudo update-alternatives  --set python /usr/bin/python3.6
+sudo apt-get install -y python3-pip
+python3 -m pip install --user --upgrade pip==9.0.3
+
+sudo mv /usr/bin/pip /usr/bin/pip2
+sudo ln -s /usr/bin/pip3 pip
+pip --version
 
 sudo pip install virtualenvwrapper awscli pipenv
 # requirements to build twisted
-sudo apt-get install -y python3-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
+sudo apt-get install -y libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
 
 ###
 # keepassx
