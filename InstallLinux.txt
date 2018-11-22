@@ -106,8 +106,8 @@ nvm install 8
 nvm alias default 8
 npm install -g tern js-beautify jshint eslint_d prettier eslint-plugin-prettier eslint-config-prettier
 
-###
-# vim emacs
+## EMACS
+
 sudo apt-get install -y xsel build-essential gcc g++ texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev gnutls-bin libcanberra-gtk-module libcanberra-gtk3-module
 wget http://mirrors.kernel.org/gnu/emacs/emacs-26.1.tar.gz
 tar -zxvf emacs-26.1.tar.gz
@@ -119,41 +119,31 @@ cd ..
 rm -rf emacs-*
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s ~/Documents/funspace/dotfiles/.spacemacs ~/.spacemacs
+cd ~/Documents/funspace/dotfiles/
 ./add_to_spacemacs.sh
-echo '
-alias emacs="emacs -nw"
-' >> ~/.zshrc
-source ~/.zshrc
+
+## VIM
 
 curl -L https://bit.ly/janus-bootstrap | bash
 ./add_to_janus.sh
 ln -s ~/Documents/funspace/dotfiles/.vimrc.after ~/.vimrc.after
 
+## ZSH
 
-###
-# oh my zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 # rm ~/.zshrc
 # ln -s `pwd`/.zshrc ~/.zshrc
 chsh -s /bin/zsh
 sudo reboot
 
+## PYTHON SYSTEM VIRTUAL ENV
 
-###in .zshrc
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
-####
-source ~/.zshrc
 mkvirtualenv --python=/usr/bin/python3.6 py3
 workon py3
 pip install yapf flake8 pylint nose mypy
 deactivate
 
-
-###
-# docker 
+## DOCKER 
 
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -174,16 +164,11 @@ sudo reboot
 
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
-sudo apt-get install -y nvidia-390
+sudo apt-get install -y nvidia-driver-415
 
-# nvidia-smi
-# Switch driver
-#sudo prime-select intel
-##sudo prime-select nvidia
-#prime-select query
+#nvidia-smi
+#sudo prime-select intel|nvidia|query
 
-# TO UPDATE GPG SIGNATURE
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 
 ###
 # docker-nvidia
@@ -269,16 +254,20 @@ Press the F10 key and boot into the Ubuntu system
 
 - First of all install the NVIDIA drivers.
 
+## NVIDIA 
+
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
 sudo apt-cache search nvidia
-sudo apt install -y nvidia-390 nvidia-prime
+sudo apt-get install -y nvidia-driver-415
 sudo reboot
 
-- Switch to intel
+#nvidia-smi
+#sudo prime-select intel|nvidia|query
 sudo prime-select intel
+sudo reboot
 
-- fans
+##- fans
 #sudo apt install -y lm-sensors fancontrol
 ##sensors
 ##pwmconfig
@@ -300,8 +289,7 @@ sudo apt-get install -y ukuu
 #run ukuu and update 4.16.18
 uname -r
 
------- jora
-
+---------------
 ## nginx
 sudo apt-get install nginx
 sudo cp ./nginx/jora.conf /etc/nginx/sites-available/
