@@ -73,7 +73,7 @@ chsh -s /bin/zsh
 sudo reboot
 
 # tmux
-wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8-rc.tar.gz
+wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
 tar -zxvf tmux-2.8-rc.tar.gz
 ./configure && make
 sudo make install
