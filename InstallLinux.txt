@@ -3,7 +3,7 @@
 
 ## SYSTEM SOFT
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk lynx ffmpeg x264 x265 bc mp4v2-utils vlc
 sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 
 ## SYSTEM RUBY
@@ -172,7 +172,7 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 sudo reboot
 
-## docker-nvidia
+## DOCKER-NVIDIA
 
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
@@ -183,67 +183,59 @@ sudo pkill -SIGHUP dockerd
 sudo service docker restart
 # docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 
-## wine
+## WINE
 
 sudo dpkg --add-architecture i386
-#wget -nc https://dl.winehq.org/wine-builds/Release.key
-#sudo apt-key add Release.key
-#sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
 wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
 sudo apt-add-repository 'deb http://dl.winehq.org/wine-builds/ubuntu/ artful main'
 
 sudo apt-get -y update && sudo apt-get install -y --install-recommends winehq-stable
-#wine --version
+wine --version
 sudo apt-get install -y mono-complete
 
-#mkdir -p ~/.wine/drive_c/installers && mkdir ~/.wine/drive_c/Pictures && mkdir ~/.wine/drive_c/programs
-#mv ~/Downloads/MEDION_Photos_logiciel_de_commande_Setup.exe ~/.wine/drive_c/installers/
-#cd ~/.wine/drive_c/installers && wine MEDION_Photos_logiciel_de_commande_Setup.exe
-#wine ~/.wine/drive_c/programs/medion_photos/MEDION\ Photos\ logiciel\ de\ commande/MEDION\ Photos\ logiciel\ de\ commande.ex
+## MEDION_Photos
 
-#adobe reader
+mkdir -p ~/.wine/drive_c/installers && mkdir ~/.wine/drive_c/Pictures && mkdir ~/.wine/drive_c/programs
+mv ~/Downloads/MEDION_Photos_logiciel_de_commande_Setup.exe ~/.wine/drive_c/installers/
+cd ~/.wine/drive_c/installers && wine MEDION_Photos_logiciel_de_commande_Setup.exe
+wine ~/.wine/drive_c/programs/medion_photos/MEDION\ Photos\ logiciel\ de\ commande/MEDION\ Photos\ logiciel\ de\ commande.ex
 
-#sudo apt install -y libxml2:i386 gdebi-core
-#wget ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb
-#sudo gdebi AdbeRdr9.5.5-1_i386linux_enu.deb
+## ADOBE READER DC
 
 sudo apt install -y wine-stable winetricks
 winetricks mspatcha
 wget https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/1800920044/AcroRdrDC1800920044_en_US.exe
 wine AcroRdrDC1800920044_en_US.exe
 
-# codec
+## GIMP
+
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt-get update
-sudo apt-get install -y ffmpeg x264 x265 bc mp4v2-utils
-sudo wget https://raw.githubusercontent.com/KrumpetPirate/AAXtoMP3/master/AAXtoMP3 -O /usr/local/bin/AAXtoMP3
-sudo chmod +x /usr/local/bin/AAXtoMP3
+sudo apt-get install gimp
+
+## ADD STARTUP APP
+
+gnome-session-properties
 
 
 ---------
 Metabox install ubuntu FIXES
 
-- Fix usb freeze
+## Fix usb freeze
 
 On the grub menu of the usb key
-Then choose the Ubuntu, 
-press the 'e' key.
-Here go to the line which contains quiet splash at the end and add  acpi=off after these words.
-Then press F10 to boot with these settings.
+- choose: Ubuntu
+- press: 'e'
+- On the line that contains quiet splash, add:  acpi=off
+- F10 (reboot with those settings)
 
-- go to grub menu
-
-On Startup press ESC
-On the grub command type: normal
-hit Enter, and then tap ESC until the menu is displayed.
-
-- fix startup
+## fix startup without nvidia driver
 
 On the grub menu
-select the Ubuntu menu entry.
-Press the E key and add the parameter nouveau.modeset=0 at the end of the linux line.
-Press the F10 key and boot into the Ubuntu system 
-
-- First of all install the NVIDIA drivers.
+- choose: Ubuntu
+- press: 'e'
+- On the line for linux, add: nouveau.modeset=0
+- F10 (reboot with those settings)
 
 ## NVIDIA 
 
@@ -258,19 +250,23 @@ sudo reboot
 sudo prime-select intel
 sudo reboot
 
-##- fans
-#sudo apt install -y lm-sensors fancontrol
-##sensors
-##pwmconfig
 
-- Sound problem on 18.04
+## go to grub menu
+
+On Startup press ESC
+On the grub command type: normal
+hit Enter, and then tap ESC until the menu is displayed.
+
+
+## Sound problem on 18.04
+
 #https://truejournals.com/2017/06/04/linux-on-sager-p8950-clevo-p950hp6/
 mv /etc/modprobe.d/alsa-base.conf /etc/modprobe.d/alsa-base.bk
 sudo sh -c "echo 'options snd-hda-intel model=no-primary-hp power_save=1' > /etc/modprobe.d/alsa.conf"
 sudo reboot
 amixer -c 0 sset Headphone 100% unmute
 
-#slow wifi iwlwifi (need update kernel)
+## slow wifi iwlwifi (need update kernel)
 
 #https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1772467
 #With the upstream kernel 4.16.18-041618 everything works fine for me. Looks like this is this patch might help: https://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/backport-iwlwifi.git/commit/drivers/net/wireless/intel?id=998ce0330c94eca4b13b8f062b3f0ca9ef9ad6d8
@@ -280,7 +276,8 @@ sudo apt-get install -y ukuu
 #run ukuu and update 4.16.18
 uname -r
 
----------------
+
+----- MORE ------
 ## nginx
 sudo apt-get install nginx
 sudo cp ./nginx/jora.conf /etc/nginx/sites-available/
