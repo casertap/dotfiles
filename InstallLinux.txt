@@ -1,18 +1,28 @@
-gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
-gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+#gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+#gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk
+## SYSTEM SOFT
 
-#system level ruby
-sudo apt-get install -y ruby-full
-sudo gem install rake sass
-sudo apt-get install -y nodejs npm
-
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk lynx ffmpeg x264 x265 bc mp4v2-utils vlc
 sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 
-###
-# git lfs
-sudo apt-get install -y python-software-properties
+## SYSTEM RUBY
+
+sudo apt-get install -y ruby-full
+sudo gem install rake sass
+
+## RBENV
+
+sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+## SYSTEM NODE 
+
+sudo apt-get install -y nodejs npm
+
+## GIT LFS
+
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -20,37 +30,42 @@ sudo apt-get install -y git-lfs
 git lfs install
 # git lfs fetch # if a repo has already cloned
 
-###
-# python
+## PYTHON
 
+sudo apt-get install -y python-setuptools python-dev build-essential
+sudo apt install -y python-pip
 #upgrade to 3.6
 sudo add-apt-repository ppa:jonathonf/python-3.6
 sudo apt-get update
 sudo apt-get install -y python3.6
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+sudo update-alternatives  --set python /usr/bin/python3.6
+sudo apt-get install -y python3-pip
+python3 -m pip install --user --upgrade pip==9.0.3
+sudo mv /usr/bin/pip /usr/bin/pip2
+sudo ln -s /usr/bin/pip3 pip
 
-sudo apt-get install -y python-setuptools python-dev build-essential
-#sudo easy_install pip
-sudo apt install -y python-pip
+## SYSTEM PYTHON PACKAGES
 
+pip --version
 sudo pip install virtualenvwrapper awscli pipenv
 # requirements to build twisted
-sudo apt-get install -y python3-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
+sudo apt-get install -y libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libpq-dev python-dev libldap2-dev libsasl2-dev python3.6-dev
 
-###
-# keepassx
+## KEEPASS
 
 sudo apt-get install -y keepassx
 # Copy the db key
 # Copy the aws cred
 
-## get dotfiles
+## DOTFILES
+
 mkdir ~/Documents/funspace
 cd ~/Documents/funspace
 git clone https://github.com/casertap/dotfiles.git
 cd dotfiles
 
-###
-# utils
+## GET IMPORTANT
 
 sudo cp `pwd`/dl_from_s3 /usr/local/bin/dl_from_s3
 sudo chmod +x /usr/local/bin/dl_from_s3
@@ -58,45 +73,7 @@ sudo cp `pwd`/backup_to_s3 /usr/local/bin/backup_to_s3
 sudo chmod +x /usr/local/bin/backup_to_s3
 #dl_from_s3 bucket path
 
-###
-# oh my zsh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-# rm ~/.zshrc
-# ln -s `pwd`/.zshrc ~/.zshrc
-chsh -s /bin/zsh
-sudo reboot
-
-# tmux
-wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8-rc.tar.gz
-tar -zxvf tmux-2.8-rc.tar.gz
-./configure && make
-sudo make install
-ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
-
-## sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
-## rm -fr /tmp/tmux
-## git clone https://github.com/tmux/tmux.git /tmp/tmux
-## cd /tmp/tmux
-## sh autogen.sh
-## ./configure && make
-## sudo make install
-## cd -
-## rm -fr /tmp/tmux
-## ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
-## echo '
-## DISABLE_AUTO_TITLE=true
-## ' >> ~/.zshrc
-
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-# start tmux
-tmux
-# source plugins
-tmux source ~/.tmux.conf
-# Install plugins with Prefix (Ctrl+b) + I
-
-
-###
-# powerline
+## POWERLINE
 
 sudo pip install git+git://github.com/Lokaltog/powerline
 wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
@@ -104,28 +81,39 @@ sudo mv PowerlineSymbols.otf /usr/share/fonts/
 sudo fc-cache -vf
 sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 
-###
-# sublime text 
+## TMUX
+
+sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
+wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
+tar -zxvf tmux-2.8.tar.gz
+cd tmux-2.8
+./configure && make
+sudo make install
+ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux
+tmux source ~/.tmux.conf
+# Install plugins with Prefix (Ctrl+b) + I
+
+## SUBLIME 
 
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt-get update
 sudo apt-get install -y sublime-text
 
-##nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-echo '
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-' >> ~/.zshrc
+## NVM
+
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+mkdir ~/.nvm
 source ~/.zshrc
 nvm install node
-#sudo ln -s /usr/bin/nodejs /usr/bin/node
+nvm install 8
+nvm alias default 8
 npm install -g tern js-beautify jshint eslint_d prettier eslint-plugin-prettier eslint-config-prettier
 
-###
-# vim emacs
+## EMACS
+
 sudo apt-get install -y xsel build-essential gcc g++ texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev gnutls-bin libcanberra-gtk-module libcanberra-gtk3-module
 wget http://mirrors.kernel.org/gnu/emacs/emacs-26.1.tar.gz
 tar -zxvf emacs-26.1.tar.gz
@@ -137,31 +125,39 @@ cd ..
 rm -rf emacs-*
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s ~/Documents/funspace/dotfiles/.spacemacs ~/.spacemacs
+cd ~/Documents/funspace/dotfiles/
 ./add_to_spacemacs.sh
-echo '
-alias emacs="emacs -nw"
-' >> ~/.zshrc
-source ~/.zshrc
+
+## VIM
 
 curl -L https://bit.ly/janus-bootstrap | bash
 ./add_to_janus.sh
 ln -s ~/Documents/funspace/dotfiles/.vimrc.after ~/.vimrc.after
 
-###in .zshrc
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
-####
-source ~/.zshrc
+## GO
+
+wget https://dl.google.com/go/go1.11.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.11.2.linux-amd64.tar.gz
+mkdir -p ~/go/bin ~/go/src ~/go/pkg  
+mkdir -p ~/golib/bin ~/golib/src ~/golib/pkg 
+curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+
+## ZSH
+
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+rm ~/.zshrc
+ln -s `pwd`/.zshrc ~/.zshrc
+chsh -s /bin/zsh
+sudo reboot
+
+## PYTHON SYSTEM VIRTUAL ENV
+
 mkvirtualenv --python=/usr/bin/python3.6 py3
 workon py3
 pip install yapf flake8 pylint nose mypy
 deactivate
 
-
-###
-# docker 
+## DOCKER 
 
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -172,29 +168,11 @@ sudo apt-get install -y docker-ce
 sudo usermod -aG docker $USER
 grep 'docker' /etc/group
 
-sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-
 sudo reboot
 
-###
-# nvidia 
-
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update
-sudo apt-get install -y nvidia-390
-
-# nvidia-smi
-# Switch driver
-#sudo prime-select intel
-##sudo prime-select nvidia
-#prime-select query
-
-# TO UPDATE GPG SIGNATURE
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
-
-###
-# docker-nvidia
+## DOCKER-NVIDIA
 
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
@@ -205,100 +183,90 @@ sudo pkill -SIGHUP dockerd
 sudo service docker restart
 # docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 
-###
-# rbenv
-
-sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(rbenv init -)"' >> ~/.zshrc
-source ~/.zshrc
-
-## wine
+## WINE
 
 sudo dpkg --add-architecture i386
-#wget -nc https://dl.winehq.org/wine-builds/Release.key
-#sudo apt-key add Release.key
-#sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
 wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
 sudo apt-add-repository 'deb http://dl.winehq.org/wine-builds/ubuntu/ artful main'
 
 sudo apt-get -y update && sudo apt-get install -y --install-recommends winehq-stable
-#wine --version
+wine --version
 sudo apt-get install -y mono-complete
 
-#mkdir -p ~/.wine/drive_c/installers && mkdir ~/.wine/drive_c/Pictures && mkdir ~/.wine/drive_c/programs
-#mv ~/Downloads/MEDION_Photos_logiciel_de_commande_Setup.exe ~/.wine/drive_c/installers/
-#cd ~/.wine/drive_c/installers && wine MEDION_Photos_logiciel_de_commande_Setup.exe
-#wine ~/.wine/drive_c/programs/medion_photos/MEDION\ Photos\ logiciel\ de\ commande/MEDION\ Photos\ logiciel\ de\ commande.ex
+## MEDION_Photos
 
-#adobe reader
+mkdir -p ~/.wine/drive_c/installers && mkdir ~/.wine/drive_c/Pictures && mkdir ~/.wine/drive_c/programs
+mv ~/Downloads/MEDION_Photos_logiciel_de_commande_Setup.exe ~/.wine/drive_c/installers/
+cd ~/.wine/drive_c/installers && wine MEDION_Photos_logiciel_de_commande_Setup.exe
+wine ~/.wine/drive_c/programs/medion_photos/MEDION\ Photos\ logiciel\ de\ commande/MEDION\ Photos\ logiciel\ de\ commande.ex
 
-#sudo apt install -y libxml2:i386 gdebi-core
-#wget ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb
-#sudo gdebi AdbeRdr9.5.5-1_i386linux_enu.deb
+## ADOBE READER DC
 
 sudo apt install -y wine-stable winetricks
 winetricks mspatcha
 wget https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/1800920044/AcroRdrDC1800920044_en_US.exe
 wine AcroRdrDC1800920044_en_US.exe
 
-# codec
+## GIMP
+
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt-get update
-sudo apt-get install -y ffmpeg x264 x265 bc mp4v2-utils
-sudo wget https://raw.githubusercontent.com/KrumpetPirate/AAXtoMP3/master/AAXtoMP3 -O /usr/local/bin/AAXtoMP3
-sudo chmod +x /usr/local/bin/AAXtoMP3
+sudo apt-get install gimp
+
+## ADD STARTUP APP
+
+gnome-session-properties
 
 
 ---------
 Metabox install ubuntu FIXES
 
-- Fix usb freeze
+## Fix usb freeze
 
 On the grub menu of the usb key
-Then choose the Ubuntu, 
-press the 'e' key.
-Here go to the line which contains quiet splash at the end and add  acpi=off after these words.
-Then press F10 to boot with these settings.
+- choose: Ubuntu
+- press: 'e'
+- On the line that contains quiet splash, add:  acpi=off
+- F10 (reboot with those settings)
 
-- go to grub menu
+## fix startup without nvidia driver
+
+On the grub menu
+- choose: Ubuntu
+- press: 'e'
+- On the line for linux, add: nouveau.modeset=0
+- F10 (reboot with those settings)
+
+## NVIDIA 
+
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+sudo apt-cache search nvidia
+sudo apt-get install -y nvidia-driver-415
+sudo reboot
+
+#nvidia-smi
+#sudo prime-select intel|nvidia|query
+sudo prime-select intel
+sudo reboot
+
+
+## go to grub menu
 
 On Startup press ESC
 On the grub command type: normal
 hit Enter, and then tap ESC until the menu is displayed.
 
-- fix startup
 
-On the grub menu
-select the Ubuntu menu entry.
-Press the E key and add the parameter nouveau.modeset=0 at the end of the linux line.
-Press the F10 key and boot into the Ubuntu system 
+## Sound problem on 18.04
 
-- First of all install the NVIDIA drivers.
-
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update
-sudo apt-cache search nvidia
-sudo apt install -y nvidia-390 nvidia-prime
-sudo reboot
-
-- Switch to intel
-sudo prime-select intel
-
-- fans
-#sudo apt install -y lm-sensors fancontrol
-##sensors
-##pwmconfig
-
-- Sound problem on 18.04
 #https://truejournals.com/2017/06/04/linux-on-sager-p8950-clevo-p950hp6/
 mv /etc/modprobe.d/alsa-base.conf /etc/modprobe.d/alsa-base.bk
 sudo sh -c "echo 'options snd-hda-intel model=no-primary-hp power_save=1' > /etc/modprobe.d/alsa.conf"
 sudo reboot
 amixer -c 0 sset Headphone 100% unmute
 
-#slow wifi iwlwifi (need update kernel)
+## slow wifi iwlwifi (need update kernel)
 
 #https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1772467
 #With the upstream kernel 4.16.18-041618 everything works fine for me. Looks like this is this patch might help: https://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/backport-iwlwifi.git/commit/drivers/net/wireless/intel?id=998ce0330c94eca4b13b8f062b3f0ca9ef9ad6d8
@@ -308,8 +276,8 @@ sudo apt-get install -y ukuu
 #run ukuu and update 4.16.18
 uname -r
 
------- jora
 
+----- MORE ------
 ## nginx
 sudo apt-get install nginx
 sudo cp ./nginx/jora.conf /etc/nginx/sites-available/
