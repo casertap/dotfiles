@@ -62,7 +62,7 @@ sudo apt-get install -y keepassx
 
 mkdir ~/Documents/funspace
 cd ~/Documents/funspace
-git clone https://github.com/casertap/dotfiles.git
+git clone git@github.com:casertap/dotfiles.git
 cd dotfiles
 
 ## GET IMPORTANT
