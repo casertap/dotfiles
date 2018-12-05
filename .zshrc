@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ZSH="/home/pc/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
@@ -47,8 +47,10 @@ alias emacs="emacs -nw"
 export EDITOR=/usr/bin/vim
 
 ## golang
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH="$HOME/golib:$HOME/go"
+export GOPATH1="$HOME/golib"
+export GOPATH2="$HOME/go"
+export GOPATH="$GOPATH1:$GOPATH2"
+export PATH=$PATH:$GOPATH1/bin:$GOPATH2/bin
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc'; fi
@@ -56,3 +58,10 @@ if [ -f '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/pc/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/pc/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/pc/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/pc/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/pc/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/sls.zsh ]] && . /home/pc/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/sls.zsh
