@@ -144,6 +144,11 @@ mkdir -p ~/golib/bin ~/golib/src ~/golib/pkg
 export GOPATH="$HOME/golib:$HOME/go"
 export PATH=$PATH:/usr/local/go/bin
 curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+go get -u -v github.com/nsf/gocode
+go get -u -v github.com/rogpeppe/godef
+go get -u -v golang.org/x/tools/cmd/guru
+go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v golang.org/x/tools/cmd/goimports
 
 ## ZSH
 
