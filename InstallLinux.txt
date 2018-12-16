@@ -225,6 +225,13 @@ sudo apt-get install gimp
 
 gnome-session-properties
 
+## VPN
+
+sudo apt-get install -y network-manager-openvpn-gnome
+wget https://vpn.hidemyass.com/vpn-config/vpn-configs.zip
+mkdir ~/.hma
+unzip vpn-configs.zip -d ~/.hma
+# Import a VPN from Network Manager UI
 
 ---------
 Metabox install ubuntu FIXES
