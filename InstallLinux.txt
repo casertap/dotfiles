@@ -3,7 +3,7 @@
 
 ## SYSTEM SOFT
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk lynx ffmpeg x264 x265 bc mp4v2-utils vlc
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk lynx ffmpeg x264 x265 bc mp4v2-utils vlc jq
 sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 
 ## SYSTEM RUBY
@@ -43,7 +43,7 @@ sudo update-alternatives  --set python /usr/bin/python3.6
 sudo apt-get install -y python3-pip
 python3 -m pip install --user --upgrade pip==9.0.3
 sudo mv /usr/bin/pip /usr/bin/pip2
-sudo ln -s /usr/bin/pip3 pip
+sudo ln -s /usr/bin/pip3 /usr/bin/pip
 
 ## SYSTEM PYTHON PACKAGES
 
@@ -62,7 +62,7 @@ sudo apt-get install -y keepassx
 
 mkdir ~/Documents/funspace
 cd ~/Documents/funspace
-git clone git@github.com:casertap/dotfiles.git
+git clone https://github.com/casertap/dotfiles.git
 cd dotfiles
 
 ## GET IMPORTANT
@@ -106,7 +106,8 @@ sudo apt-get install -y sublime-text
 
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 mkdir ~/.nvm
-source ~/.zshrc
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install node
 nvm install 8
 nvm alias default 8
@@ -140,7 +141,14 @@ wget https://dl.google.com/go/go1.11.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.11.2.linux-amd64.tar.gz
 mkdir -p ~/go/bin ~/go/src ~/go/pkg  
 mkdir -p ~/golib/bin ~/golib/src ~/golib/pkg 
+export GOPATH="$HOME/golib:$HOME/go"
+export PATH=$PATH:/usr/local/go/bin
 curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+go get -u -v github.com/nsf/gocode
+go get -u -v github.com/rogpeppe/godef
+go get -u -v golang.org/x/tools/cmd/guru
+go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v golang.org/x/tools/cmd/goimports
 
 ## ZSH
 
@@ -217,6 +225,13 @@ sudo apt-get install gimp
 
 gnome-session-properties
 
+## VPN
+
+sudo apt-get install -y network-manager-openvpn-gnome
+wget https://vpn.hidemyass.com/vpn-config/vpn-configs.zip
+mkdir ~/.hma
+unzip vpn-configs.zip -d ~/.hma
+# Import a VPN from Network Manager UI
 
 ---------
 Metabox install ubuntu FIXES
