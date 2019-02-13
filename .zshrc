@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ZSH="/home/pc/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
@@ -35,6 +35,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+## rust
+export PATH="$HOME/.cargo/bin:$PATH"
 DISABLE_AUTO_TITLE=true
 
 ## powerline (SLOW)
@@ -49,6 +51,7 @@ export EDITOR=/usr/bin/vim
 ## golang
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH="$HOME/golib:$HOME/go"
+export PATH="$PATH:$HOME/golib/bin:$HOME/go/bin"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc'; fi
@@ -56,3 +59,14 @@ if [ -f '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/pc/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/pc/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/tu/Projects/the-urge-reactjs/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/tu/Projects/the-urge-reactjs/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/tu/Projects/the-urge-reactjs/node_modules/tabtab/.completions/sls.zsh ]] && . /home/tu/Projects/the-urge-reactjs/node_modules/tabtab/.completions/sls.zsh
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/tu/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/slss.zsh ]] && . /home/tu/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/slss.zsh

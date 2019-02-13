@@ -30,12 +30,15 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '((go :variables go-format-before-save t)
+   '(rust
+     (go :variables go-format-before-save t)
      sql
      nginx
      html
      ruby
+     yaml
      javascript
+     (json :variables json-fmt-tool 'prettier)
      scala
      ;; (setq-default
      ;;  dotspacemacs-configuration-layers '(
@@ -68,6 +71,7 @@ values."
      better-defaults
      docker
      ansible
+
      csv
      (python :variables python-enable-yapf-format-on-save t)
      (python :variables python-fill-column 120)
@@ -88,6 +92,7 @@ values."
                                       prettier-js
                                       eslintd-fix
                                       whitespace-cleanup-mode
+                                      flycheck-yamllint
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -326,7 +331,7 @@ values."
    dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
-   ;; (default '("ag" "pt" "ack" "grep"))
+   ;; (default '("grep" "ag" "pt" "ack" "grep"))
    dotspacemacs-search-tools '("ag" "grep" "pt" "ack")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
@@ -404,10 +409,18 @@ you should place your code here."
   ;;             (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
   ;;             (flycheck-mode)
   ;;             ))
-  (eval-after-load 'scss-mode
-    '(add-hook 'scss-mode-hook
-               (lambda ()
-                 (add-hook 'before-save-hook 'web-beautify-css t t))))
+  ;; (add-hook 'yaml-mode-hook
+  ;;           (lambda ()
+  ;;             (message "running yaml hook")
+  ;;             (require 'flycheck-yamllint)
+  ;;             (eval-after-load 'flycheck
+  ;;               '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))
+  ;;             (require 'flycheck)
+  ;;             ))
+  ;; (eval-after-load 'scss-mode
+  ;;   '(add-hook 'scss-mode-hook
+  ;;              (lambda ()
+  ;;                (add-hook 'before-save-hook 'web-beautify-css t t))))
   (setq
      prettier-js-args '(
        "--trailing-comma" "es5"
