@@ -375,6 +375,10 @@ Reload config SPC f e R
 sudo apt-get install xsel
 # f8 or SPC y
 
+<F3> :Start defining a keyboard macro (kmacro-start-macro-or-insert-counter). 
+<F4> :If a keyboard macro is being defined, end the definition; otherwise, execute the most recent keyboard macro (kmacro-end-or-call-macro). 
+C-x C-k r :Run the last keyboard macro on each line that begins in the region (apply-macro-to-region-lines).
+
 ===COPY PASTE tmux====
 
 tmux prefix is Control+b and that you have emacs style key bindings on
