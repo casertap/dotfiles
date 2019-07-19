@@ -5,6 +5,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
+export PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} %T % %{$reset_color%}'
+
 plugins=(
   git
 )
@@ -62,3 +64,13 @@ if [ -f '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home
 if [ -f '/home/pc/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/pc/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/pc/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/pc/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/pc/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/sls.zsh ]] && . /home/pc/Documents/workspace/the-urge-reactjs/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/pc/go/src/github.com/the-urge-tech/go-search-proxy/node_modules/tabtab/.completions/slss.zsh ]] && . /home/pc/go/src/github.com/the-urge-tech/go-search-proxy/node_modules/tabtab/.completions/slss.zsh

@@ -71,10 +71,12 @@ values."
      better-defaults
      docker
      ansible
-
+     neotree
      csv
-     (python :variables python-enable-yapf-format-on-save t)
-     (python :variables python-fill-column 120)
+     (python :variables python-formatter 'black)
+     (python :variables python-enable-yapf-format-on-save nil)
+     (python :variables python-format-on-save t)
+     (python :variables python-fill-column 88)
      (python :variables python-sort-imports-on-save t)
      ;; (setq-default dotspacemacs-configuration-layers
      ;;               '((auto-completion :variables
@@ -383,7 +385,11 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq
+    blacken-line-length 88)
+  (setq
+    neo-window-width 40
     neo-show-hidden-files nil
+    neo-window-fixed-size nil
     neo-hidden-regexp-list '("\\.DS_Store$" "__pycache__$" "\\.tern-port$" "\\..*?\\.swp$" ".*?\\.pyc$" "\\.#.*$"))
   ;; PYTHON
   (add-hook 'python-mode-hook '(lambda () (pyvenv-workon "py3")))
