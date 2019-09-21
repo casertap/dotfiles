@@ -74,10 +74,8 @@ values."
      neotree
      csv
      (python :variables python-formatter 'black)
-     (python :variables python-enable-yapf-format-on-save nil)
      (python :variables python-format-on-save t)
      (python :variables python-fill-column 88)
-     (python :variables python-sort-imports-on-save t)
      ;; (setq-default dotspacemacs-configuration-layers
      ;;               '((auto-completion :variables
      ;;                                  auto-completion-enable-help-tooltip t)))
@@ -334,7 +332,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("grep" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "grep" "pt" "ack")
+   dotspacemacs-search-tools '("ack" "ag" "pt" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
