@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-alias emacs="emacs -nw"
+#alias emacs="emacs -nw"
 
 
 export TERM=xterm-256color
@@ -56,6 +56,8 @@ export GOPATH2="$HOME/go"
 export GOPATH="$GOPATH1:$GOPATH2"
 export PATH=$PATH:$GOPATH1/bin:$GOPATH2/bin
 export PATH=$PATH:/usr/local/go/bin
+
+export PATH=/opt/apache-maven-3.6.2/bin:$PATH
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home/pc/Downloads/google-cloud-sdk/path.zsh.inc'; fi

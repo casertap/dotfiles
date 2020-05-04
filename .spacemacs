@@ -38,7 +38,8 @@ values."
      ruby
      yaml
      javascript
-     (json :variables json-fmt-tool 'prettier)
+     ;; (json :variables json-fmt-tool 'prettier)
+     json
      scala
      ;; (setq-default
      ;;  dotspacemacs-configuration-layers '(
@@ -92,7 +93,7 @@ values."
                                       prettier-js
                                       eslintd-fix
                                       whitespace-cleanup-mode
-                                      flycheck-yamllint
+                                      ;; flycheck-yamllint
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -382,6 +383,13 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (defun spacemacs/check-large-file ()
+    (when (> (buffer-size) (* 1024 1024))
+        (setq buffer-read-only t)
+        (buffer-disable-undo)
+        (fundamental-mode)
+        ))
+  (add-hook 'find-file-hook 'spacemacs/check-large-file)
   (setq
     blacken-line-length 88)
   (setq
@@ -421,14 +429,17 @@ you should place your code here."
   ;;               '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))
   ;;             (require 'flycheck)
   ;;             ))
-  ;; (eval-after-load 'scss-mode
-  ;;   '(add-hook 'scss-mode-hook
-  ;;              (lambda ()
-  ;;                (add-hook 'before-save-hook 'web-beautify-css t t))))
+  (eval-after-load 'scss-mode
+    '(add-hook 'scss-mode-hook
+               (lambda ()
+                 (add-hook 'before-save-hook 'web-beautify-css t t))))
   (setq
      prettier-js-args '(
-       "--trailing-comma" "es5"
-       "--bracket-spacing" "false"))
+                        "--trailing-comma" "es5"
+                        "--print-width" "120"
+                        "--tab-width" "2"
+                        "--semi" "true"
+                        "--single-quote" "false"))
   (setq x-select-enable-clipboard t)
   (defun yank-to-x-clipboard ()
     (interactive)
