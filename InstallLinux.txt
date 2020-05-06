@@ -126,6 +126,7 @@ cd ..
 rm -rf emacs-*
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s ~/Documents/funspace/dotfiles/.spacemacs ~/.spacemacs
+gpg --homedir ~/.emacs.d/elpa/gnupg --receive-keys 066DAFCB81E42C40
 cd ~/Documents/funspace/dotfiles/
 ./add_to_spacemacs.sh
 
