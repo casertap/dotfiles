@@ -54,6 +54,7 @@ export EDITOR=/usr/bin/vim
 export GOPATH1="$HOME/golib"
 export GOPATH2="$HOME/go"
 export GOPATH="$GOPATH1:$GOPATH2"
+export GO111MODULE=on
 export PATH=$PATH:$GOPATH1/bin:$GOPATH2/bin
 export PATH=$PATH:/usr/local/go/bin
 
