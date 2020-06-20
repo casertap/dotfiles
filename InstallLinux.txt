@@ -84,9 +84,9 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 ## TMUX
 
 sudo apt-get install -y automake build-essential pkg-config libevent-dev libncurses5-dev
-wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
-tar -zxvf tmux-2.8.tar.gz
-cd tmux-2.8
+wget https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b.tar.g
+tar -zxvf tmux-3.1b.tar.gz
+cd tmux-3.1b
 ./configure && make
 sudo make install
 ln -s ~/Documents/funspace/dotfiles/.tmux.conf ~/.tmux.conf
