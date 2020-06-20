@@ -3,7 +3,7 @@
 
 ## SYSTEM SOFT
 
-sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk lynx ffmpeg x264 x265 bc mp4v2-utils vlc jq
+sudo apt-get install -y wget git vim zsh silversearcher-ag tig kdiff3 curl htop fonts-symbola inkscape webhttrack httrack tree openjdk-8-jdk lynx ffmpeg vlc jq
 sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 
 ## SYSTEM RUBY
